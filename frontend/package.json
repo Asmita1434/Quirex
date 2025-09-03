@@ -8,11 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-<<<<<<< HEAD
-     "start": "vite preview --port 4173"
-=======
     "start": "vite preview --port 4173"
->>>>>>> 9a607de (Updated project files)
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.1",
