@@ -8,8 +8,8 @@ import cors from 'cors';
 
 
 dotenv.config();
-console.log("MONGO_URL from env:", process.env.MONGO_URL);
-
+const mongoURL = process.env.ATLASDB_URL;
+console.log("MONGO_URL from env:", mongoURL);
 
 const app = express();
 
