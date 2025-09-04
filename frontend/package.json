@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.2.1",
     "aos": "^2.3.4",
     "axios": "^1.11.0",
+    "backend": "file:..",
     "bootstrap": "^5.3.7",
     "react": "^19.1.0",
     "react-countup": "^6.5.3",

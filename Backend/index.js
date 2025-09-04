@@ -6,11 +6,14 @@ import adminRoute from './route/adminRoute.js'
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
+
 dotenv.config();
-console.log("MONGO_URI from env:", process.env.MONGO_URL);
+console.log("MONGO_URL from env:", process.env.MONGO_URL);
 
 
 const app = express();
+
+
 app.use(express.json());
 app.use(fileUpload());
 app.use(cors({
@@ -28,6 +31,8 @@ dbConnect();
 app.use('/img',express.static('uploads'));
 app.use('/api', router);
 app.use('/api', adminRoute)
+
+
 
 app.get("/test", (req, res) => {
     res.send("API is working!");
