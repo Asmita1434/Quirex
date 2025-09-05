@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(fileUpload());
 app.use(cors({
-    origin: "http://localhost:5173", // frontend ka URL
+    origin: "https://quirex-frontend.onrender.com", // frontend ka URL
     credentials: true
 }));
 
