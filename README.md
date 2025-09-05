@@ -1,67 +1,56 @@
 # Quirex - Real Estate Platform
 
-# Overview
+## Overview
 
 Quirex is a full-stack real estate platform built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
 It allows users to explore properties, add new listings, and manage real estate data in a smooth and user-friendly interface.
 
 The project aims to simplify property management for both buyers and sellers through a modern, responsive, and easy-to-use web application.
 
-# Live Demo
+## Live Demo
 [Quirex Live Demo](https://quirex-frontend.onrender.com/)
 
-# Features
+## Features
 
-# 🏠 Property Listings – Add and view property details with images.
+ 🏠 Property Listings – Add and view property details with images.
 
-# 🔒 User Authentication – Secure login/signup for property management.
+ 🔒 User Authentication – Secure login/signup for property management.
 
-# 📷 Image Uploads – Upload property images via backend API.
+ 📷 Image Uploads – Upload property images via backend API.
 
-# ⚡ MERN Stack – Full-stack implementation with separate frontend and backend deployments.
+ ⚡ MERN Stack – Full-stack implementation with separate frontend and backend deployments.
 
-# 🌐 Responsive UI – Works seamlessly on desktops and mobiles.
+ 🌐 Responsive UI – Works seamlessly on desktops and mobiles.
 
-# 🚀 Deployed on Render – Backend and frontend hosted on Render
+ 🚀 Deployed on Render – Backend and frontend hosted on Render
 
 
-# Tech Stack
-Technology	                                Purpose
-MongoDB                                   	Database for storing properties
-Express.js	                                Backend framework
-React.js	                                  Frontend UI
-Node.js	                                    Backend runtime environment
-Axios	                                      API calls
-SweetAlert2	                                Alerts & notifications
-Bootstrap	                                  UI components
-Render	                                    Deployment
+## Tech Stack
+MongoDB - Database for storing properties
+Express.js - Backend framework
+React.js -  Frontend UI
+Node.js -	 Backend runtime environment
+Axios -	 API calls
+SweetAlert2 - Alerts & notifications
+Bootstrap - UI components
+Render - Deployment
 
-# Project Structure
-Quirex/
-├── Backend/          # Express + Node.js backend
-│   ├── config/       # DB connection files
-│   ├── route/        # API routes
-│   ├── uploads/      # Uploaded images
-│   └── index.js      # Main backend server
-│
-├── frontend/         # React frontend
-│   ├── public/       
-│   ├── src/          # React components
-│   └── package.json  
-│
-└── README.md
+## Screenshots
 
-# Screenshots
+### Home Page
+![Home Page](screenshots/home.png)
+![Services](screenshots/services.png)
 
-(You can add real screenshots here)
+### Property Page
+![Properties](screenshots/properties.png)
 
-Homepage
+### Property Listings
+![Add Property](screenshots/add-property.png)
 
-Add Property Page
+### Sold List
+![Sold List](screenshots/sold-list.png)
 
-Property Listings
-
-# Future Enhancements
+## Future Enhancements
 
 Implement user authentication (JWT/Passport)
 
