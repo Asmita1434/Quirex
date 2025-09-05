@@ -59,7 +59,7 @@ const UserProfile = () => {
     formData.append('profile', data.profile[0]);
     formData.append('userId', userData?._id)
 
-    const response = await axios.put('http://localhost:9000/api/user-update', formData, {
+    const response = await axios.put('https://quirex-backend.onrender.com/api/user-update', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

@@ -8,7 +8,7 @@ const AdminSoldProperty = () => {
     fetchData();
   }, [])
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:9000/api/admin-sold-list');
+    const response = await axios.get('https://quirex-backend.onrender.com/api/admin-sold-list');
     if (response?.data?.code == 200) {
       setData(response?.data?.data)
     }
@@ -25,7 +25,7 @@ const AdminSoldProperty = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.post('http://localhost:9000/api/delete-sold-property', { _id })
+        const response = await axios.post('https://quirex-backend.onrender.com/api/delete-sold-property', { _id })
         if (response?.data?.code == 200) {
           Swal.fire({
             title: "Delete Property",
@@ -81,7 +81,7 @@ const AdminSoldProperty = () => {
                       <td>{item?.price}    </td>
                       <td>{item?.area}    </td>
                       <td>{item?.location}    </td>
-                      <td><img height="60" width="100" src={`http://localhost:9000/img/${item?.pic}`} alt='' />    </td>
+                      <td><img height="60" width="100" src={`https://quirex-backend.onrender.com/img/${item?.pic}`} alt='' />    </td>
                       <td><button onClick={()=>handleDeleteProperty(item?._id)} className='btn buy'>Delete</button></td>
                     </tr>
                   </>)

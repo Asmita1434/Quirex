@@ -8,7 +8,7 @@ const AdminContactUsList = () => {
     fetchData();
   }, [])
   const fetchData = async () => {
-    const response = await axios.post('http://localhost:9000/api/contact-us-list');
+    const response = await axios.post('https://quirex-backend.onrender.com/api/contact-us-list');
     if (response?.data?.code == 200) {
       setData(response?.data?.data)
     }

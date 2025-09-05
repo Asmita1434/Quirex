@@ -8,7 +8,7 @@ const UserBoughtList = () => {
   }, [])
   const fetchData = async () => {
     const UserData = JSON.parse(localStorage.getItem('userInfo'));
-    const response = await axios.post('http://localhost:9000/api/user-bought-list', {
+    const response = await axios.post('https://quirex-backend.onrender.com/api/user-bought-list', {
       userId: UserData?._id
     })
     if (response?.data?.code == 200) {
@@ -45,7 +45,7 @@ const UserBoughtList = () => {
                     <td>{item?.area}</td>
                     <td>{item?.description}</td>
                     <td>{item?.location}</td>
-                    <td><img height="60" width="100" src={`http://localhost:9000/img/${item?.pic}`} /></td>
+                    <td><img height="60" width="100" src={`https://quirex-backend.onrender.com/img/${item?.pic}`} /></td>
                   </tr>
                 </>)
               })}

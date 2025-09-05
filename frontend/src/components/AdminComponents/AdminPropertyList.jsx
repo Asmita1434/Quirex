@@ -11,7 +11,7 @@ const AdminPropertyList = () => {
   }, [])
 
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:9000/api/property-list');
+    const response = await axios.get('https://quirex-backend.onrender.com/api/property-list');
     if (response?.data?.code == 200) {
       setListData(response?.data?.data)
     }
@@ -29,7 +29,7 @@ const AdminPropertyList = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.post('http://localhost:9000/api/delete-property', { _id })
+        const response = await axios.post('https://quirex-backend.onrender.com/api/delete-property', { _id })
         if (response?.data?.code == 200) {
           Swal.fire({
             title: "Delete Property",
@@ -66,7 +66,7 @@ const AdminPropertyList = () => {
                   <div data-aos="zoom-in" className="card  mx-auto shadow-lg border border-0 propertyCard">
 
                     <div className="cardImgDiv">
-                      <img src={`http://localhost:9000/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
+                      <img src={`https://quirex-backend.onrender.com/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
 
                       <div className="badge">FOR RENT</div>
                       <div className="locationProperty">

@@ -37,7 +37,7 @@ const UserRegister = () => {
       formData.append('address', data.address);
       formData.append('profile', data.profile[0]);
 
-      const response = await axios.post('http://localhost:9000/api/user-register', formData, {
+      const response = await axios.post('https://quirex-backend.onrender.com/api/user-register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

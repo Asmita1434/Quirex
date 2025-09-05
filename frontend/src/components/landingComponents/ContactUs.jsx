@@ -29,7 +29,7 @@ const ContactUs = () => {
     resolver: yupResolver(schemacontact),
   });
   const contactUser = async (data) => {
-    const response = await axios.post('http://localhost:9000/api/contact-us', data);
+    const response = await axios.post('https://quirex-backend.onrender.com/api/contact-us', data);
     if (response?.data?.code == 200) {
       Swal.fire({
         title: "Contact Us",

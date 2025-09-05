@@ -32,7 +32,7 @@ const AddProperty = () => {
     formData.append('location', data?.location);
     formData.append('description', data?.description);
     formData.append('pic', data?.pic[0]);
-    const response = await axios.post('http://localhost:9000/api/add-property', formData, {
+    const response = await axios.post('https://quirex-backend.onrender.com/api/add-property', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
