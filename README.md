@@ -25,30 +25,35 @@ The project aims to simplify property management for both buyers and sellers thr
  🚀 Deployed on Render – Backend and frontend hosted on Render
 
 
-## Tech Stack
-MongoDB - Database for storing properties
-Express.js - Backend framework
-React.js -  Frontend UI
-Node.js -	 Backend runtime environment
-Axios -	 API calls
-SweetAlert2 - Alerts & notifications
-Bootstrap - UI components
-Render - Deployment
+## 🛠️ Tech Stack
+
+- **MongoDB** – Database for storing properties  
+- **Express.js** – Backend framework for building REST APIs  
+- **React.js** – Frontend UI development  
+- **Node.js** – Backend runtime environment  
+- **Axios** – For making API calls  
+- **SweetAlert2** – For alerts & notifications  
+- **Bootstrap** – For responsive UI components  
+- **Render** – For deployment of frontend & backend  
+
 
 ## Screenshots
 
+## 📸 Screenshots
+
 ### Home Page
-![Home Page](screenshots/home.png)
-![Services](screenshots/services.png)
+![Home Page](Screenshots/home.png)
+![Services](Screenshots/services.png)
 
 ### Property Page
-![Properties](screenshots/properties.png)
+![Properties](Screenshots/properties.png)
 
 ### Property Listings
-![Add Property](screenshots/add-property.png)
+![Add Property](Screenshots/add-property.png)
 
 ### Sold List
-![Sold List](screenshots/sold-list.png)
+![Sold List](Screenshots/sold-list.png)
+
 
 ## Future Enhancements
 
@@ -60,6 +65,6 @@ Enable property editing and deletion
 
 Integrate payment gateway for property bookings
 
-# Contributing
+## Contributing
 
 Pull requests are welcome! For significant changes, please open an issue first to discuss what you would like to change.
