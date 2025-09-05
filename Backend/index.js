@@ -6,13 +6,11 @@ import adminRoute from './route/adminRoute.js'
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
 
-
 dotenv.config();
 const mongoURL = process.env.ATLASDB_URL;
 console.log("MONGO_URL from env:", mongoURL);
 
 const app = express();
-
 
 app.use(express.json());
 app.use(fileUpload());
