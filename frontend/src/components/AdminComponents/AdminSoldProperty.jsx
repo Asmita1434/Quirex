@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../landingComponents/NavBar'
+import Swal from "sweetalert2";
 import API from "../../utils/api";
 const AdminSoldProperty = () => {
   const [data, setData] = useState([])
@@ -80,7 +81,7 @@ const AdminSoldProperty = () => {
                       <td>{item?.price}    </td>
                       <td>{item?.area}    </td>
                       <td>{item?.location}    </td>
-                      <td><img height="60" width="100" src={`https://quirex-backend.onrender.com/img/${item?.pic}`} alt='' />    </td>
+                      <td><img height="60" width="100" src={`${import.meta.env.VITE_API_URL}/img/${item?.pic}`} alt='' />    </td>
                       <td><button onClick={()=>handleDeleteProperty(item?._id)} className='btn buy'>Delete</button></td>
                     </tr>
                   </>)
