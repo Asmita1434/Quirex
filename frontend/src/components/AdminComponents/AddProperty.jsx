@@ -8,7 +8,7 @@ import { MdDescription } from "react-icons/md";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
+import API from "../../utils/api";
 import Swal from 'sweetalert2';
 const schemaproperty = yup
   .object()
@@ -32,7 +32,7 @@ const AddProperty = () => {
     formData.append('location', data?.location);
     formData.append('description', data?.description);
     formData.append('pic', data?.pic[0]);
-    const response = await axios.post('https://quirex-backend.onrender.com/api/add-property', formData, {
+    const response = await API.post('/api/add-property', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

@@ -5,7 +5,7 @@ import { MdAddPhotoAlternate } from "react-icons/md";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
+import API from "../../utils/api";
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
 
@@ -37,7 +37,7 @@ const UserRegister = () => {
       formData.append('address', data.address);
       formData.append('profile', data.profile[0]);
 
-      const response = await axios.post('https://quirex-backend.onrender.com/api/user-register', formData, {
+      const response = await API.post('/api/user-register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -128,7 +128,7 @@ const UserRegister = () => {
                   <div className="text-center mt-4">
                     <input type="submit" className="btn px-5 btn-login" value="Register" />
                   </div>
-                   <p className='text-center mt-3'>Already have an account? <a href="/login" className='account'><b>Login</b></a></p>
+                  <p className='text-center mt-3'>Already have an account? <a href="/login" className='account'><b>Login</b></a></p>
                 </div>
               </form>
             </div>

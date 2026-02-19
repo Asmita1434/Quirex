@@ -5,7 +5,7 @@ import { MdAddPhotoAlternate } from "react-icons/md";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
+import API from "../../utils/api";
 import Swal from 'sweetalert2';
 import NavBar from '../landingComponents/NavBar';
 
@@ -59,7 +59,7 @@ const AdminProfile = () => {
     formData.append('profile', data.profile[0]);
     formData.append('userId', userData?._id)
 
-    const response = await axios.put('https://quirex-backend.onrender.com/api/user-update', formData, {
+    const response = await API.put('/api/user-update', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

@@ -3,7 +3,7 @@ import { FaVectorSquare } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import Swal from 'sweetalert2';
 import NavBar from '../landingComponents/NavBar'
-import axios from 'axios';
+import API from "../../utils/api";
 const AdminPropertyList = () => {
   const [listData, setListData] = useState([])
   useEffect(() => {
@@ -11,7 +11,7 @@ const AdminPropertyList = () => {
   }, [])
 
   const fetchData = async () => {
-    const response = await axios.get('https://quirex-backend.onrender.com/api/property-list');
+    const response = await API.get('/api/property-list');
     if (response?.data?.code == 200) {
       setListData(response?.data?.data)
     }
@@ -29,7 +29,7 @@ const AdminPropertyList = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.post('https://quirex-backend.onrender.com/api/delete-property', { _id })
+        const response = await API.post('/api/delete-property', { _id })
         if (response?.data?.code == 200) {
           Swal.fire({
             title: "Delete Property",

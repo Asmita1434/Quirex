@@ -4,7 +4,7 @@ import { FaKey } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
+import API from "../../utils/api";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom'
 import NavBar from './NavBar';
@@ -23,7 +23,7 @@ const Login = () => {
   });
   
   const handleLogin = async (data) => {
-    const response = await axios.post('https://quirex-backend.onrender.com/api/login', data)
+    const response = await API.post('/api/login', data)
     if (response?.data?.code == 200) {
       Swal.fire({
         title: "Login",

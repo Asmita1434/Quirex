@@ -4,22 +4,24 @@ import { FaLocationDot } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
-import axios from 'axios';
+import API from "../../utils/api";
+
 const Property = () => {
   const [listData, setListData] = useState([])
+  const location = useLocation();
+  const navigate = useNavigate();
   useEffect(() => {
     fetchData()
   }, [])
 
   const fetchData = async () => {
-    const response = await axios.get('https://quirex-backend.onrender.com/api/property-list');
+    const response = await API.get('/api/property-list');
     if (response?.data?.code == 200) {
       setListData(response?.data?.data)
     }
 
   }
-  const location = useLocation();
-  const navigate = useNavigate();
+  
   const handleBuy = async (propertyId) => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -28,7 +30,7 @@ const Property = () => {
       return
     }
 
-    const response = await axios.post('https://quirex-backend.onrender.com/api/buy', { userId: userData?._id, propertyId });
+    const response = await API.post('/api/buy', { userId: userData?._id, propertyId });
     if (response?.data?.code == 200) {
       Swal.fire({
         title: "Buy Property",
@@ -60,7 +62,7 @@ const Property = () => {
                   <div data-aos="zoom-in" className="card  mx-auto shadow-lg border border-0 propertyCard">
 
                     <div className="cardImgDiv">
-                      <img src={`https://quirex-backend.onrender.com/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
+                      <img src={`${import.meta.env.VITE_API_URL}/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
 
                       <div className="badge">FOR RENT</div>
                       <div className="locationProperty">

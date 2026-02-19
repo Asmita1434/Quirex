@@ -5,7 +5,7 @@ import { MdOutlineSubject } from "react-icons/md";
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
+import API from "../../utils/api";
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ const ContactUs = () => {
     resolver: yupResolver(schemacontact),
   });
   const contactUser = async (data) => {
-    const response = await axios.post('https://quirex-backend.onrender.com/api/contact-us', data);
+    const response = await API.post('/api/contact-us', data);
     if (response?.data?.code == 200) {
       Swal.fire({
         title: "Contact Us",

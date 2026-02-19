@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../landingComponents/NavBar'
-import axios from 'axios'
+import API from "../../utils/api";
 const UserBoughtList = () => {
   const [list, setList] = useState([])
   useEffect(() => {
@@ -8,7 +8,7 @@ const UserBoughtList = () => {
   }, [])
   const fetchData = async () => {
     const UserData = JSON.parse(localStorage.getItem('userInfo'));
-    const response = await axios.post('https://quirex-backend.onrender.com/api/user-bought-list', {
+    const response = await API.post('/api/user-bought-list', {
       userId: UserData?._id
     })
     if (response?.data?.code == 200) {

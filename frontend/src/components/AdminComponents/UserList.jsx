@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import NavBar from '../landingComponents/NavBar'
-import axios from 'axios'
+import API from "../../utils/api";
 import Swal from 'sweetalert2'
 const UserList = () => {
   const [data, setData] = useState([])
@@ -9,7 +9,7 @@ const UserList = () => {
     fetchData();
   }, [])
   const fetchData = async () => {
-    const response = await axios.get('https://quirex-backend.onrender.com/api/admin-user-list');
+    const response = await API.get('/api/admin-user-list');
     if (response?.data?.code == 200) {
       setData(response?.data?.data)
     }

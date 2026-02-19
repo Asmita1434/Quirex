@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../landingComponents/NavBar'
-import axios from 'axios'
-import Swal from 'sweetalert2'
+import API from "../../utils/api";
 const AdminSoldProperty = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     fetchData();
   }, [])
   const fetchData = async () => {
-    const response = await axios.get('https://quirex-backend.onrender.com/api/admin-sold-list');
+    const response = await API.get('/api/admin-sold-list');
     if (response?.data?.code == 200) {
       setData(response?.data?.data)
     }
@@ -25,7 +24,7 @@ const AdminSoldProperty = () => {
       confirmButtonText: "Yes, delete it!"
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const response = await axios.post('https://quirex-backend.onrender.com/api/delete-sold-property', { _id })
+        const response = await API.post('/api/delete-sold-property', { _id })
         if (response?.data?.code == 200) {
           Swal.fire({
             title: "Delete Property",
