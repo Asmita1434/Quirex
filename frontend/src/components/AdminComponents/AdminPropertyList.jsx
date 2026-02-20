@@ -66,7 +66,7 @@ const AdminPropertyList = () => {
                   <div data-aos="zoom-in" className="card  mx-auto shadow-lg border border-0 propertyCard">
 
                     <div className="cardImgDiv">
-                      <img src={`https://quirex-backend.onrender.com/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
+                      <img src={`${import.meta.env.VITE_API_URL}/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
 
                       <div className="badge">FOR RENT</div>
                       <div className="locationProperty">
