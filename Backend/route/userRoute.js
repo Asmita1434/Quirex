@@ -188,6 +188,61 @@ router.post('/contact-us', async (req, res) => {
 
 })
 
+router.post('/search', async(req, res) => {
+  try{
+    const { location } = req.body;
+
+    const isFound = await propertyModel.find({ location });
+    console.log(isFound);
+    if(isFound?.length > 0) {
+      res.json({
+        code: 200,
+        message: "Property Found..",
+        data: ""
+      })
+    } else {
+      res.json({
+        code: 400,
+        message: "No Property Registered",
+        data: ""
+      })
+    }
+     
+  }catch{
+    res.json({
+      code: 500,
+      message: "Internal Server Error",
+      data: ''
+    })
+  }
+})
+
+router.get('/search-list', async (req, res) => {
+    try {
+      const { location } = req.query;
+        const result = await propertyModel.find({location});
+        if (result?.length > 0) {
+            res.json({
+                code: 200,
+                message: "Data fetched successfully..",
+                data: result
+            })
+        } else {
+            res.json({
+                code: 400,
+                message: "Data Not Found.",
+                data: []
+            })
+        }
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
+})
+
 
 
 

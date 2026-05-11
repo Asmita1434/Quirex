@@ -1,13 +1,45 @@
 import { MdOutlineOtherHouses } from "react-icons/md";
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import API from "../../utils/api";
+import Swal from 'sweetalert2';
+
+const schema = yup
+  .object()
+  .shape({
+    location: yup.string().required().min(2),
+  })
+
 const NavBar = () => {
   const navigate = useNavigate()
+  const { register, handleSubmit, formState: { errors } } = useForm({
+      resolver: yupResolver(schema),
+    });
   const [useData, setUserData] = useState(null)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userInfo'));
     setUserData(user)
   }, [])
+
+  const handleSearch = async (data) => {
+      const response = await API.post('/api/search', data);
+      console.log(response);
+      if(response?.data?.code == 200){
+         localStorage.setItem("locationInfo", JSON.stringify(data));
+         navigate('/search');
+      } else {
+        Swal.fire({
+                title: "Not Found",
+                text: response?.data?.message,
+                icon: "error"
+              });
+      }
+      console.log(data);
+      
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('userInfo');
@@ -86,6 +118,12 @@ const NavBar = () => {
                 <li className="nav-item"><Link className="nav-link text-dark " to="/contact-us">Contact Us</Link></li>
               </ul>
               <div className="d-flex align-items-center gap-3">
+                <form className="d-flex" role="search" onSubmit={handleSubmit((d) => handleSearch(d))}>
+                  <input className="form-control me-2" {...register('location')} type="search" placeholder="Enter location" aria-label="Search"/>
+                  {errors?.location && <p className='text-danger'>{errors?.location?.message}</p>}
+                  <button className="btn1  px-4 py-2 " type="submit">Search</button>
+                </form>
+
                 <Link to='/register'>  <button className=" btn1 px-4 py-2  ">Registration</button></Link>
                 <Link to='/login'> <button className=" btn1  px-4 py-2 ">Login</button></Link>
               </div>

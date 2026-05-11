@@ -19,6 +19,7 @@ import AdminContactUsList from "./components/AdminComponents/AdminContactUsList"
 import UserBoughtList from "./components/userComponents/UserBoughtList";
 import UserProfile from "./components/userComponents/UserProfile";
 import ContactUs from "./components/landingComponents/ContactUs";
+import Search from "./components/landingComponents/Search";
 import "aos/dist/aos.css";
 import "aos/dist/aos.js";
 import Aos from "aos";
@@ -60,6 +61,7 @@ function App() {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/search" element={<Search/>}/>
 
         {/* admin Section  */}
         {userData?.userType == "admin" && (
