@@ -58,8 +58,8 @@ const Property = () => {
           <div className='row py-3 px-1 '>
             {listData?.map((item, index) => {
               return (<>
-                <div className='col-sm-4 col-md-4 px-3 mb-4'>
-                  <div data-aos="zoom-in" className="card  mx-auto shadow-lg border border-0 propertyCard">
+               <div className='col-12 col-sm-6 col-lg-4 mb-4'>
+                  <div data-aos="zoom-in" className="card shadow-lg border-0 propertyCard h-100">
 
                     <div className="cardImgDiv">
                       <img src={`${import.meta.env.VITE_API_URL}/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />

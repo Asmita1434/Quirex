@@ -1,5 +1,4 @@
 import React from 'react'
-import { MdOutlineOtherHouses } from "react-icons/md";
 import { CiLocationOn } from "react-icons/ci";
 import { LuPhoneCall } from "react-icons/lu";
 import { BsEnvelope } from "react-icons/bs";
@@ -12,80 +11,128 @@ import { IoIosSend } from "react-icons/io";
 const Footer = () => {
   return (
     <>
-
       <div className="footer">
-        <div className="row g-4">
+        <div className="container">
+          <div className="row g-4">
 
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="d-flex align-items-center mb-3 logo">
-             <img src="/Quirex.png" alt="Logo" className="logo fw-bold"/> Quirex
+            {/* About */}
+            <div className="col-12 col-md-6 col-lg-4">
+              <div className="d-flex align-items-center mb-3">
+                <img
+                  src="/Quirex.png"
+                  alt="Quirex"
+                  className="footer-logo-img me-2"
+                />
+                <h3 className="logo m-0">Quirex</h3>
+              </div>
+
+              <p>
+                Quirex helps buyers, sellers, and renters discover
+                verified properties across India through a simple,
+                secure, and user-friendly platform.
+              </p>
+
+              <p>
+                <CiLocationOn className="me-2" />
+                Noida, Uttar Pradesh, India
+              </p>
+
+              <p>
+                <LuPhoneCall className="me-2" />
+                +91 98765 43210
+              </p>
+
+              <p>
+                <BsEnvelope className="me-2" />
+                support@quirex.in
+              </p>
+
+              <div className="social-icons">
+                <a href="#"><ImFacebook /></a>
+                <a href="#"><IoLogoTwitter /></a>
+                <a href="#"><FaLinkedin /></a>
+                <a href="#"><FaYoutube /></a>
+              </div>
             </div>
-            <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
-            <p><CiLocationOn className='me-2' />Brooklyn, New York, United States</p>
-            <p><LuPhoneCall className='me-2' />+0123-456789</p>
-            <p><BsEnvelope className='me-2' />example@example.com</p>
-            <div className="d-flex gap-3 mt-2">
-              <a href="#" className="text-white"><ImFacebook /></a>
-              <a href="#" className="text-white"><IoLogoTwitter /></a>
-              <a href="#" className="text-white"><FaLinkedin /></a>
-              <a href="#" className="text-white"><FaYoutube /></a>
+
+            {/* Quick Links */}
+            <div className="col-6 col-md-3 col-lg-2">
+              <h5>Quick Links</h5>
+
+              <a href="/">Home</a>
+              <a href="/about">About</a>
+              <a href="/services">Services</a>
+              <a href="/property">Properties</a>
+              <a href="/contact-us">Contact</a>
             </div>
-          </div>
 
+            {/* Services */}
+            <div className="col-6 col-md-3 col-lg-2">
+              <h5>Services</h5>
 
-          <div className="col-6 col-lg-2 pt-3">
-            <h5 className='text-light'>Company</h5>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">All Products</a>
-            <a href="#">Locations Map</a>
-            <a href="#">FAQ</a>
-            <a href="#">Contact us</a>
-          </div>
-
-
-          <div className="col-6 col-lg-2 pt-3">
-            <h5 className='text-light'>Services</h5>
-            <a href="#">Order tracking</a>
-            <a href="#">Wish List</a>
-            <a href="#">Login</a>
-            <a href="#">My account</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Promotional Offers</a>
-          </div>
-
-          <div className="col-6 col-lg-2 pt-3">
-            <h5 className='text-light'>Customer Care</h5>
-            <a href="#">Login</a>
-            <a href="#">My account</a>
-            <a href="#">Wish List</a>
-            <a href="#">Order tracking</a>
-            <a href="#">FAQ</a>
-            <a href="#">Contact us</a>
-          </div>
-
-
-          <div className="col-12 col-lg-3 pt-3">
-            <h5 className='text-light'>Newsletter</h5>
-            <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-            <div className="d-flex mb-3">
-              <input type="email" placeholder="Email*" className="subscribe-input" />
-              <button className="subscribe-btn"><IoIosSend /></button>
+              <a href="#">Buy Property</a>
+              <a href="#">Rent Property</a>
+              <a href="#">Sell Property</a>
+              <a href="#">Property Search</a>
+              <a href="#">Customer Support</a>
             </div>
-            <h6 className="text-white mt-3">We Accept</h6>
-            <div className="payment-icons mt-2">
-              <img src='/img/payment-4.png' />
+
+            {/* Account */}
+            <div className="col-6 col-md-3 col-lg-2">
+              <h5>Account</h5>
+
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+              <a href="/user-profile">My Profile</a>
+              <a href="/user-bought">Bought Properties</a>
             </div>
+
+            {/* Newsletter */}
+            <div className="col-12 col-md-9 col-lg-2">
+              <h5>Newsletter</h5>
+
+              <p>
+                Subscribe to receive the latest property listings
+                and updates.
+              </p>
+
+              <div className="newsletter-box">
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="subscribe-input"
+                />
+
+                <button className="subscribe-btn">
+                  <IoIosSend />
+                </button>
+              </div>
+
+              <h6 className="text-white mt-4">
+                Secure Payments
+              </h6>
+
+              <div className="payment-icons">
+                <img
+                  src="/img/payment-4.png"
+                  alt="Payments"
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
-      <div className="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
-        <div className='text-center'>All Rights Reserved @ Company {new Date().getFullYear()}</div>
-        <div className="mt-2 mt-md-0">
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Claim</a>
-          <a href="#">Privacy & Policy</a>
+      <div className="footer-bottom">
+        <div>
+          © {new Date().getFullYear()} Quirex. All Rights Reserved.
+        </div>
+
+        <div className="footer-links">
+          <a href="#">Terms</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Support</a>
         </div>
       </div>
     </>

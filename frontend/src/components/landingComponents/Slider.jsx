@@ -18,7 +18,12 @@ const Slider = () => {
                 
                 <Typewriter
                   options={{
-                    strings: ['  Find Your Dream House.'],
+                    strings: [
+  'Find Your Dream Home.',
+  'Discover Premium Properties.',
+  'Your Perfect Property Awaits.',
+  'Buy Smart, Live Better.'
+],
                     autoStart: true,
                     loop: true,
                   
@@ -27,12 +32,11 @@ const Slider = () => {
               </b>
 
               <p className='mt-3 sliderp'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                Discover the perfect property that matches your lifestyle and budget. Explore verified listings, compare options, and find your dream home with confidence through Quirex's smart and user-friendly platform.
               </p>
 
 
-              <button className="btn btn2 rounded-0 px-4">Make An Enquiry</button>
+              <button className="btn btn2 rounded-0 px-4">Explore Properties</button>
             </div>
 
             {/* Image Content */}

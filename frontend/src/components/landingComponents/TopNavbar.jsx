@@ -13,12 +13,12 @@ const TopNavbar = () => {
 
               <span>
                 <FaRegEnvelope className="btncolor" />
-                info@webmail.com
+                support@quirex.in
               </span>
 
               <span>
                 <FaLocationDot className="btncolor" />
-                15/A, NestTower, NYC
+                Noida, Uttar Pradesh, India
               </span>
 
             </div>
