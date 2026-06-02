@@ -7,7 +7,7 @@ import { IoLogoTwitter } from "react-icons/io5";
 import { FaLinkedin } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa6";
 import { IoIosSend } from "react-icons/io";
-
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
@@ -59,32 +59,32 @@ const Footer = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <h5>Quick Links</h5>
 
-              <a href="/">Home</a>
-              <a href="/about">About</a>
-              <a href="/services">Services</a>
-              <a href="/property">Properties</a>
-              <a href="/contact-us">Contact</a>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/services">Services</Link>
+              <Link to="/property">Properties</Link>
+              <Link to="/contact-us">Contact</Link>
             </div>
 
             {/* Services */}
             <div className="col-6 col-md-3 col-lg-2">
               <h5>Services</h5>
 
-              <a href="#">Buy Property</a>
-              <a href="#">Rent Property</a>
-              <a href="#">Sell Property</a>
-              <a href="#">Property Search</a>
-              <a href="#">Customer Support</a>
+              <Link to="#">Buy Property</Link>
+              <Link to="#">Rent Property</Link>
+              <Link to="#">Sell Property</Link>
+              <Link to="#">Property Search</Link>
+              <Link to="#">Customer Support</Link>
             </div>
 
             {/* Account */}
             <div className="col-6 col-md-3 col-lg-2">
               <h5>Account</h5>
 
-              <a href="/login">Login</a>
-              <a href="/register">Register</a>
-              <a href="/user-profile">My Profile</a>
-              <a href="/user-bought">Bought Properties</a>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+              <Link to="/user-profile">My Profile</Link>
+              <Link to="/user-bought">Bought Properties</Link>
             </div>
 
             {/* Newsletter */}
@@ -130,9 +130,9 @@ const Footer = () => {
         </div>
 
         <div className="footer-links">
-          <a href="#">Terms</a>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Support</a>
+          <Link to="#">Terms</Link>
+          <Link to="#">Privacy Policy</Link>
+          <Link to="#">Support</Link>
         </div>
       </div>
     </>
