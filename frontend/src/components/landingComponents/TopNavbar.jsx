@@ -25,7 +25,7 @@ const TopNavbar = () => {
           </div>
 
           <div className="col-lg-6 col-md-5 d-none d-md-block">
-            <div className="social-icons">
+            <div className="top-social-icons">
               <a><i className="fa-brands fa-facebook-f"></i></a>
               <a><i className="fa-brands fa-twitter"></i></a>
               <a><i className="fa-brands fa-instagram"></i></a>

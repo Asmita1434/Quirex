@@ -12,13 +12,22 @@
    font-size: 12px;
  }
 
- .social-icons {
-   display: flex;
-   justify-content: flex-end;
-   gap: 20px;
-   color: #fff;
-   margin: 0;
- }
+ .top-social-icons{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:18px;
+}
+
+.top-social-icons a{
+  color: #fff !important;
+  font-size:18px;
+  text-decoration:none;
+}
+
+.top-social-icons a:hover{
+  color:#eb2e0c;
+}
 
  @media(max-width:768px) {
 
@@ -30,7 +39,7 @@
      text-align: center;
    }
 
-   .social-icons {
+   .top-social-icons {
      justify-content: center;
      margin-top: 10px;
    }
