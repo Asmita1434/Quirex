@@ -52,13 +52,6 @@ The platform allows users to search properties by location, view detailed proper
 - **React Icons** – Icons and UI enhancements
 - **Render** – Frontend and backend deployment
 
-### Add Property
-
-![Add Property](Screenshots/add-property.png)
-
-### Sold Property List
-
-![Sold List](Screenshots/sold-list.png)
 
 ## Future Enhancements
 
