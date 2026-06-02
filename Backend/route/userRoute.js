@@ -79,31 +79,47 @@ router.put('/user-update', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, "fkdlfjglkdfjglk");
 
-    const isLogin = await userModel.findOne({ email, password });
-    if (isLogin) {
-      res.json({
-        code: 200,
-        message: "Login Successfully..",
-        data: isLogin
-      })
-    } else {
-      res.json({
+    console.log("Email:", email);
+    console.log("Password:", password);
+    const users = await userModel.find({});
+    console.log("TOTAL USERS:", users.length);
+    console.log("USERS:", users);
+    const user = await userModel.findOne({ email });
+    console.log("SEARCH EMAIL:", email);
+    console.log("FOUND USER:", user);
+    if (!user) {
+      return res.json({
         code: 400,
-        message: "Invalid Credentials.",
+        message: "Email not found",
         data: ""
-      })
+      });
     }
+
+    if (user.password !== password) {
+      return res.json({
+        code: 400,
+        message: "Wrong password",
+        data: ""
+      });
+    }
+
+    return res.json({
+      code: 200,
+      message: "Login Successfully",
+      data: user
+    });
+
   } catch (err) {
+    console.log("LOGIN ERROR =>", err);
+
     res.json({
       code: 500,
-      message: "Internal Server Error",
-      data: ''
-    })
+      message: err.message,
+      data: ""
+    });
   }
-
-})
+});
 
 router.post('/buy', async (req, res) => {
   try {
@@ -188,62 +204,95 @@ router.post('/contact-us', async (req, res) => {
 
 })
 
-router.post('/search', async(req, res) => {
-  try{
-    const { location } = req.body;
+router.post('/search', async (req, res) => {
+  try {
+    const location = req.body.location.trim();
 
-    const isFound = await propertyModel.find({ location });
-    console.log(isFound);
-    if(isFound?.length > 0) {
+    const result = await propertyModel.find({
+      location: {
+        $regex: location,
+        $options: "i"
+      }
+    });
+
+    if (result.length > 0) {
       res.json({
         code: 200,
-        message: "Property Found..",
-        data: ""
-      })
+        message: "Property Found",
+        data: result
+      });
     } else {
       res.json({
         code: 400,
         message: "No Property Registered",
-        data: ""
-      })
+        data: []
+      });
     }
-     
-  }catch{
+
+  } catch (err) {
+    console.log(err);
+
     res.json({
       code: 500,
       message: "Internal Server Error",
-      data: ''
-    })
+      data: []
+    });
   }
-})
+});
 
 router.get('/search-list', async (req, res) => {
-    try {
-      const { location } = req.query;
-        const result = await propertyModel.find({location});
-        if (result?.length > 0) {
-            res.json({
-                code: 200,
-                message: "Data fetched successfully..",
-                data: result
-            })
-        } else {
-            res.json({
-                code: 400,
-                message: "Data Not Found.",
-                data: []
-            })
-        }
-    } catch (err) {
-        res.json({
-            code: 500,
-            message: "Internal Server Error.",
-            data: []
-        })
+  try {
+    const location = req.query.location?.trim();
+
+    const result = await propertyModel.find({
+      location: {
+        $regex: location,
+        $options: "i"
+      }
+    });
+
+    if (result.length > 0) {
+      res.json({
+        code: 200,
+        message: "Data fetched successfully",
+        data: result
+      });
+    } else {
+      res.json({
+        code: 400,
+        message: "Data Not Found",
+        data: []
+      });
     }
-})
 
+  } catch (err) {
+    console.log(err);
 
+    res.json({
+      code: 500,
+      message: "Internal Server Error",
+      data: []
+    });
+  }
+});
 
+router.get('/locations', async (req, res) => {
+  try {
+    const locations = await propertyModel.distinct('location');
+
+    res.json({
+      code: 200,
+      data: locations
+    });
+
+  } catch (err) {
+    console.log(err);
+
+    res.json({
+      code: 500,
+      data: []
+    });
+  }
+});
 
 export default router;

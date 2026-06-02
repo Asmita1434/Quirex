@@ -84,7 +84,7 @@ const UserRegister = () => {
                     <label className="form-label">Your Email</label>
                     <div className="input-group">
                       <span className="input-group-text"><FaEnvelope /></span>
-                      <input type="email" {...register('email')} className="form-control" placeholder="Enter your email" />
+                      <input type="email" {...register('email')} className="form-control" placeholder="Enter your email" autoComplete="email"/>
                     </div>
                     {errors.email && <p className="text-danger">{errors.email.message}</p>}
                   </div>
@@ -102,7 +102,7 @@ const UserRegister = () => {
                     <label className="form-label">Password</label>
                     <div className="input-group">
                       <span className="input-group-text"><FaKey /></span>
-                      <input type="password" {...register('password')} className="form-control" placeholder="Password" />
+                      <input type="password" {...register('password')} className="form-control" placeholder="Password" autoComplete="current-password"/>
                     </div>
                     {errors.password && <p className="text-danger">{errors.password.message}</p>}
                   </div>

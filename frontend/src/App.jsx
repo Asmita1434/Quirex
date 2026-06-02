@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./App.css";
-import { Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import TopNavbar from "./components/landingComponents/TopNavbar";
 import Home from "./components/landingComponents/Home";
 import About from "./components/landingComponents/About";
@@ -20,6 +20,7 @@ import UserBoughtList from "./components/userComponents/UserBoughtList";
 import UserProfile from "./components/userComponents/UserProfile";
 import ContactUs from "./components/landingComponents/ContactUs";
 import Search from "./components/landingComponents/Search";
+import ChatBot from "./components/ChatBot";
 import "aos/dist/aos.css";
 import "aos/dist/aos.js";
 import Aos from "aos";
@@ -46,7 +47,7 @@ function App() {
       },
       []
     );
-  },[]);
+  }, []);
 
   return (
     <>
@@ -61,7 +62,7 @@ function App() {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/search" element={<Search/>}/>
+        <Route path="/search" element={<Search />} />
 
         {/* admin Section  */}
         {userData?.userType == "admin" && (
@@ -83,9 +84,9 @@ function App() {
             <Route path="/user-profile" element={<UserProfile />} />
           </>
         )}
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
+      <ChatBot />
       <Footer />
     </>
   );

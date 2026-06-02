@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import API from "../../utils/api";
 import Swal from 'sweetalert2';
-
+import { FiSearch } from "react-icons/fi";
 const schema = yup
   .object()
   .shape({
@@ -16,8 +16,8 @@ const schema = yup
 const NavBar = () => {
   const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm({
-      resolver: yupResolver(schema),
-    });
+    resolver: yupResolver(schema),
+  });
   const [useData, setUserData] = useState(null)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('userInfo'));
@@ -25,20 +25,20 @@ const NavBar = () => {
   }, [])
 
   const handleSearch = async (data) => {
-      const response = await API.post('/api/search', data);
-      console.log(response);
-      if(response?.data?.code == 200){
-         localStorage.setItem("locationInfo", JSON.stringify(data));
-         navigate('/search');
-      } else {
-        Swal.fire({
-                title: "Not Found",
-                text: response?.data?.message,
-                icon: "error"
-              });
-      }
-      console.log(data);
-      
+    const response = await API.post('/api/search', data);
+    console.log(response);
+    if (response?.data?.code == 200) {
+      localStorage.setItem("locationInfo", JSON.stringify(data));
+      navigate('/search');
+    } else {
+      Swal.fire({
+        title: "Not Found",
+        text: response?.data?.message,
+        icon: "error"
+      });
+    }
+    console.log(data);
+
   }
 
   const handleLogout = () => {
@@ -51,7 +51,7 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-sm bg-white border-bottom shadow-sm sticky-top">
         <div className="container">
           <div className="navbar-brand text-danger fw-bold d-flex align-items-center" >
-           <img src="/Quirex.png" alt="Logo" className="logo fw-bold"/> &nbsp;<b className='font text-center'>Quirex</b>
+            <img src="/Quirex.png" alt="Logo" className="logo fw-bold" /> &nbsp;<b className='font text-center'>Quirex</b>
           </div>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
@@ -78,7 +78,7 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-sm bg-white border-bottom shadow-sm sticky-top">
         <div className="container">
           <div className="navbar-brand text-danger fw-bold d-flex align-items-center" >
-          <img src="/Quirex.png" alt="Logo" className="logo" /> &nbsp;<b className='font text-center'>Quirex</b>
+            <img src="/Quirex.png" alt="Logo" className="logo" /> &nbsp;<b className='font text-center'>Quirex</b>
           </div>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span className="navbar-toggler-icon"></span>
@@ -91,8 +91,29 @@ const NavBar = () => {
               <li className="nav-item"><Link className="nav-link text-dark " to="/user-profile">Profile</Link></li>
               <li className="nav-item"><Link className="nav-link text-dark " to="/contact-us">Contact Us</Link></li>
             </ul>
-            <div className="d-flex align-items-center gap-3" onClick={handleLogout}>
-              <Link > <button className=" btn1  px-4 py-2 ">LogOut</button></Link>
+            <div className="user-navbar-actions">
+              <form
+                className="search-form"
+                onSubmit={handleSubmit((d) => handleSearch(d))}
+              >
+                <input
+                  type="search"
+                  className="search-input"
+                  placeholder="Search location..."
+                  {...register("location")}
+                />
+
+                <button
+                  type="submit"
+                  className="search-icon-btn"
+                >
+                  <FiSearch />
+                </button>
+              </form>
+
+              <button className="login-btn" onClick={handleLogout}>
+                Logout
+              </button>
             </div>
           </div>
         </div>
@@ -101,33 +122,83 @@ const NavBar = () => {
   } else {
     return (
       <>
-        <nav className="navbar navbar-expand-sm bg-white border-bottom shadow-sm sticky-top">
+        <nav className="navbar navbar-expand-lg bg-white border-bottom shadow-sm sticky-top">
           <div className="container">
-            <div className="navbar-brand text-danger fw-bold d-flex align-items-center" >
-              <img src="/Quirex.png" alt="Logo" className="logo"/> &nbsp;<b className='font text-center'>Quirex</b>
-            </div>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <Link
+              to="/"
+              className="navbar-brand d-flex align-items-center text-decoration-none"
+            >
+              <img src="/Quirex.png" alt="Logo" className="logo" />
+              <b className="font ms-2">Quirex</b>
+            </Link>
+
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+            >
               <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="mx-5 collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav me-auto mb-2 mb-sm-0">
-                <li className="nav-item"><Link className="nav-link text-dark " to="/">Home</Link></li>
-                <li className="nav-item"><Link className="nav-link text-dark " to="/about">About</Link></li>
-                <li className="nav-item"><Link className="nav-link text-dark " to="/services">Services</Link></li>
-                <li className="nav-item"><Link className="nav-link text-dark " to="/property">Property</Link></li>
-                <li className="nav-item"><Link className="nav-link text-dark " to="/contact-us">Contact Us</Link></li>
+
+            <div className="collapse navbar-collapse" id="navbarNav">
+
+              {/* menu */}
+
+              <ul className="navbar-nav mx-auto">
+                <li className="nav-item">
+                  <Link className="nav-link" to="/">Home</Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/about">About</Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/services">Services</Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/property">Property</Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link" to="/contact-us">Contact</Link>
+                </li>
               </ul>
-              <div className="d-flex align-items-center gap-3">
-                <form className="d-flex" role="search" onSubmit={handleSubmit((d) => handleSearch(d))}>
-                  <input className="form-control me-2" {...register('location')} type="search" placeholder="Enter location" aria-label="Search"/>
-                  {errors?.location && <p className='text-danger'>{errors?.location?.message}</p>}
-                  <button className="btn1  px-4 py-2 " type="submit">Search</button>
+
+              <div className="navbar-actions">
+
+                <form
+                  className="search-form"
+                  onSubmit={handleSubmit((d) => handleSearch(d))}
+                >
+                  <input
+                    type="search"
+                    className="search-input"
+                    placeholder="Search location..."
+                    {...register("location")}
+                  />
+
+                  <button
+                    type="submit"
+                    className="search-icon-btn"
+                  >
+                    <FiSearch />
+                  </button>
                 </form>
 
-                <Link to='/register'>  <button className=" btn1 px-4 py-2  ">Registration</button></Link>
-                <Link to='/login'> <button className=" btn1  px-4 py-2 ">Login</button></Link>
+                <Link to="/login">
+                  <button className="login-btn">
+                    Login
+                  </button>
+                </Link>
+
               </div>
+
             </div>
+
           </div>
         </nav>
       </>
