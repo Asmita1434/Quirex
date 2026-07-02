@@ -1,287 +1,207 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BsChatDotsFill } from "react-icons/bs";
 import API from "../utils/api";
+import { botKnowledge } from "../data/chatbotData";
+import { detectIntent, extractCity, getCurrentTime } from "../utils/chatbotUtils";
 
 const ChatBot = () => {
     const [open, setOpen] = useState(false);
-    const [message, setMessage] = useState("");
     const [language, setLanguage] = useState("en");
-    const welcomeMessage = {
-        en: `👋 Hello! Welcome to Quirex.
-
-🏠 I can help you:
-• Find Properties
-• Search by Location
-• Contact Support
-• Learn About Quirex
-
-How can I assist you today?`,
-
-        hi: `👋 नमस्ते! Quirex में आपका स्वागत है।
-
-🏠 मैं आपकी मदद कर सकता हूँ:
-• प्रॉपर्टी खोजने में
-• लोकेशन खोजने में
-• सहायता प्राप्त करने में
-• Quirex के बारे में जानकारी देने में
-
-मैं आपकी कैसे सहायता कर सकता हूँ?`
-    };
-
+    const [message, setMessage] = useState("");
+    const [typing, setTyping] = useState(false);
 
     const [messages, setMessages] = useState([
         {
             sender: "bot",
-            text: welcomeMessage.en
-        }
+            text: botKnowledge.welcome.en,
+            time: getCurrentTime(),
+        },
     ]);
-
 
     const bottomRef = useRef(null);
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({
-            behavior: "smooth"
-        });
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
+
+    const addBotMessage = (text) => {
+        setMessages((prev) => [
+            ...prev,
+            {
+                sender: "bot",
+                text,
+                time: getCurrentTime(),
+            },
+        ]);
+    };
 
     const sendMessage = async () => {
         if (!message.trim()) return;
 
-        const userText = message;
+        const text = message.trim();
 
         setMessages((prev) => [
             ...prev,
             {
                 sender: "user",
-                text: userText
-            }
+                text,
+                time: getCurrentTime(),
+            },
         ]);
 
         setMessage("");
+        setTyping(true);
 
-        const msg = userText.toLowerCase().trim();
+        setTimeout(async () => {
+            const intent = detectIntent(text);
 
-        // HELLO
+            if (intent) {
+                addBotMessage(botKnowledge[intent][language]);
+                setTyping(false);
+                return;
+            }
 
-        if (
-            msg === "hi" ||
-            msg === "hello" ||
-            msg === "hey" ||
-            msg === "namaste"
-        ) {
-            setMessages((prev) => [
-                ...prev,
-                {
-                    sender: "bot",
-                    text:
-                        language === "hi"
-                            ? "😊 नमस्ते! मैं आपकी कैसे सहायता कर सकता हूँ?"
-                            : "😊 Hello! How can I assist you today?"
+            const city = extractCity(text);
+
+            if (city) {
+                try {
+                    const res = await API.get(`/api/search-list?location=${city}`);
+
+                    if (res.data.code === 200 && res.data.data.length > 0) {
+                        const result = res.data.data
+                            .map(
+                                (p) =>
+                                    `🏠 ${p.title}\n📍 ${p.location}\n💰 ₹${p.price}\n📐 ${p.area} Sq Ft`
+                            )
+                            .join("\n\n");
+
+                        addBotMessage(result);
+                    } else {
+                        addBotMessage(
+                            language === "en"
+                                ? `No properties found in ${city}.`
+                                : `${city} में कोई प्रॉपर्टी नहीं मिली।`
+                        );
+                    }
+                } catch {
+                    addBotMessage(
+                        language === "en"
+                            ? "Server error."
+                            : "सर्वर त्रुटि।"
+                    );
                 }
-            ]);
-            return;
-        }
 
-        // ABOUT QUIREX
+                setTyping(false);
+                return;
+            }
 
-        if (
-            msg.includes("what is quirex") ||
-            msg.includes("about quirex") ||
-            msg.includes("quirex kya hai")
-        ) {
-            setMessages((prev) => [
-                ...prev,
-                {
-                    sender: "bot",
-                    text:
-                        language === "hi"
-                            ? "🏠 Quirex एक रियल एस्टेट प्लेटफॉर्म है जहाँ आप विभिन्न स्थानों की प्रॉपर्टीज खोज सकते हैं।"
-                            : "🏠 Quirex is a real estate platform where users can search, explore and discover properties in different locations."
-                }
-            ]);
-            return;
-        }
-
-        // CONTACT
-
-        if (
-            msg.includes("contact") ||
-            msg.includes("support") ||
-            msg.includes("help")
-        ) {
-            setMessages((prev) => [
-                ...prev,
-                {
-                    sender: "bot",
-                    text:
-                        language === "hi"
-                            ? "📞 आप Contact Us पेज के माध्यम से हमसे संपर्क कर सकते हैं।"
-                            : "📞 You can contact us using the Contact Us page available on Quirex."
-                }
-            ]);
-            return;
-        }
-
-        // PROPERTY SEARCH
-
-        try {
-            const response = await API.get(
-                `/api/search-list?location=${userText}`
+            addBotMessage(
+                language === "en"
+                    ? "Sorry, I didn't understand that. Try asking about properties, cities, contact or Quirex."
+                    : "क्षमा करें, मैं समझ नहीं पाया।"
             );
 
-            if (
-                response?.data?.code === 200 &&
-                response?.data?.data?.length > 0
-            ) {
-                const propertyText = response.data.data
-                    .slice(0, 5)
-                    .map(
-                        (item) =>
-                            `🏠 ${item.title}
-📍 ${item.location}
-💰 ₹${item.price}`
-                    )
-                    .join("\n\n");
-
-                setMessages((prev) => [
-                    ...prev,
-                    {
-                        sender: "bot",
-                        text: propertyText
-                    },
-                    {
-                        sender: "bot",
-                        text:
-                            language === "hi"
-                                ? "😊 आशा है यह जानकारी आपके लिए उपयोगी रही होगी।"
-                                : "😊 Hope this helps! Let me know if you'd like to explore another location."
-                    }
-                ]);
-            } else {
-                setMessages((prev) => [
-                    ...prev,
-                    {
-                        sender: "bot",
-                        text:
-                            language === "hi"
-                                ? "❌ इस लोकेशन में कोई प्रॉपर्टी नहीं मिली।"
-                                : "❌ No property found in that location."
-                    }
-                ]);
-            }
-        } catch (err) {
-            setMessages((prev) => [
-                ...prev,
-                {
-                    sender: "bot",
-                    text: "⚠️ Something went wrong."
-                }
-            ]);
-        }
+            setTyping(false);
+        }, 900);
     };
 
     return (
         <>
-            {/* Floating Button */}
-
-            <div
-                className="chatbot-btn"
-                onClick={() => setOpen(!open)}
-            >
+            <div className="chatbot-btn" onClick={() => setOpen(!open)}>
                 <BsChatDotsFill />
             </div>
-
-            {/* Chat Window */}
 
             {open && (
                 <div className="chat-window">
 
                     <div className="chat-header">
+                        <div className="assistant-info">
 
-                        <div>
-                            <div className="assistant-title">
-                                Quirex Assistant
+                            <div className="assistant-logo">
+                                🏠
                             </div>
 
-                            <small className="assistant-status">
-                                🟢 Online
-                            </small>
-                        </div>
+                            <div>
 
-                        <div className="chat-actions">
+                                <h4>Quirex Assistant</h4>
 
-                            <button
-                                className={`lang-btn ${language === "en" ? "active-lang" : ""}`}
-                                onClick={() => {
-                                    setLanguage("en");
-                                    setMessages([
-                                        {
-                                            sender: "bot",
-                                            text: welcomeMessage.en
-                                        }
-                                    ]);
-                                }}
-                            >
-                                EN
-                            </button>
+                                <small>🟢 Online</small>
 
-                            <button
-                                className={`lang-btn ${language === "hi" ? "active-lang" : ""}`}
-                                onClick={() => {
-                                    setLanguage("hi");
-                                    setMessages([
-                                        {
-                                            sender: "bot",
-                                            text: welcomeMessage.hi
-                                        }
-                                    ]);
-                                }}
-                            >
-                                हिंदी
-                            </button>
-
-                            <button
-                                className="chat-close"
-                                onClick={() => setOpen(false)}
-                            >
-                                ✕
-                            </button>
+                            </div>
 
                         </div>
 
+                        <div>
+                            <button onClick={() => setLanguage("en")}>EN</button>
+                            <button onClick={() => setLanguage("hi")}>हिं</button>
+                            <button onClick={() => setOpen(false)}>✕</button>
+                        </div>
                     </div>
 
                     <div className="chat-body">
-                        {messages.length === 1 && (
-                            <div className="quick-actions">
 
-                                <button onClick={() => setMessage("Hyderabad")}>
-                                    Hyderabad
-                                </button>
+                        {messages.map((m, i) => (
 
-                                <button onClick={() => setMessage("Bangalore")}>
-                                    Bangalore
-                                </button>
-
-                                <button onClick={() => setMessage("What is Quirex")}>
-                                    About Quirex
-                                </button>
-
-                            </div>
-                        )}
-                        {messages.map((item, index) => (
                             <div
-                                key={index}
-                                className={
-                                    item.sender === "user"
-                                        ? "user-msg"
-                                        : "bot-msg"
-                                }
+                                key={i}
+                                className={`chat-message ${m.sender}`}
                             >
-                                {item.text}
+
+                                {m.sender === "bot" &&
+
+                                    <div className="bot-avatar">
+                                        🤖
+                                    </div>
+
+                                }
+
+                                <div
+                                    className={
+                                        m.sender === "user"
+                                            ? "user-msg"
+                                            : "bot-msg"
+                                    }
+                                >
+
+                                    <p>{m.text}</p>
+
+                                    <small>{m.time}</small>
+
+                                </div>
+
+                                {m.sender === "user" &&
+
+                                    <div className="user-avatar">
+                                        👤
+                                    </div>
+
+                                }
+
                             </div>
+
                         ))}
+
+                        {typing && (
+
+                            <div className="chat-message bot">
+
+                                <div className="bot-avatar">
+                                    🤖
+                                </div>
+
+                                <div className="bot-msg">
+
+                                    <div className="typing">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        )}
 
                         <div ref={bottomRef}></div>
 
@@ -290,15 +210,14 @@ How can I assist you today?`,
                     <div className="chat-footer">
 
                         <input
-                            type="text"
                             value={message}
-                            placeholder="Search location or ask a question..."
-                            onChange={(e) =>
-                                setMessage(e.target.value)
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder={
+                                language === "en"
+                                    ? "Ask anything..."
+                                    : "कुछ पूछें..."
                             }
-                            onKeyDown={(e) =>
-                                e.key === "Enter" && sendMessage()
-                            }
+                            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
                         />
 
                         <button onClick={sendMessage}>
