@@ -21,7 +21,7 @@ const Property = () => {
     }
 
   }
-  
+   
   const handleBuy = async (propertyId) => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -45,6 +45,11 @@ const Property = () => {
       })
     }
   }
+
+  const handleListingPage = async (propertyId) => {
+    localStorage.setItem('propertyId', propertyId);
+    navigate('/property-page');
+  }
   return (
     <>
       {location?.pathname != "/" && <NavBar />}
@@ -61,7 +66,7 @@ const Property = () => {
                <div className='col-12 col-sm-6 col-lg-4 mb-4'>
                   <div data-aos="zoom-in" className="card shadow-lg border-0 propertyCard h-100">
 
-                    <div className="cardImgDiv">
+                    <div className="cardImgDiv" onClick={() => handleListingPage(item?._id)}>
                       <img src={`${import.meta.env.VITE_API_URL}/img/${item?.pic}`} className="card-img-top img-fluid featuredimg" alt="..." />
 
                       <div className="badge">FOR RENT</div>

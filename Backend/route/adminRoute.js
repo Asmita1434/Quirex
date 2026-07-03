@@ -67,6 +67,27 @@ adminRoute.get('/property-list', async (req, res) => {
     }
 })
 
+adminRoute.get('/property-page', async (req, res) => {
+    try {
+        const {_id} = req.body;
+        const result = await propertyModel.findById(_id);
+        
+            res.json({
+                code: 200,
+                message: "Data fetched successfully..",
+                data: result
+            })
+        
+
+    } catch (err) {
+        res.json({
+            code: 500,
+            message: "Internal Server Error.",
+            data: []
+        })
+    }
+})
+
 adminRoute.post('/contact-us-list', async (req, res) => {
     try {
         const data = await contactModel.find();

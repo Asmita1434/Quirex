@@ -26,6 +26,7 @@ import "aos/dist/aos.js";
 import Aos from "aos";
 import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
+import ListingPage from "./components/landingComponents/ListingPage";
 
 function App() {
   const location = useLocation();
@@ -62,7 +63,8 @@ function App() {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<Search/>}/>
+        <Route path="/property-page" element={<ListingPage/>}/>
 
         {/* admin Section  */}
         {userData?.userType == "admin" && (

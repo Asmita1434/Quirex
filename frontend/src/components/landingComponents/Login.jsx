@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import API from "../../utils/api";
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom' 
 import NavBar from './NavBar';
 
 const schema = yup

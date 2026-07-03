@@ -20,7 +20,7 @@ const propertySchema = new mongoose.Schema({
   description: { type: String },
   location: { type: String },
   pic: { type: String },
-  createdAt: { type: Date, default: Date.now() },
+  createdAt: { type: Date, default: Date.now() }, 
   updatedAt: { type: Date, default: Date.now() },
 })
 export const propertyModel = mongoose.model('properties', propertySchema);
