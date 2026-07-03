@@ -70,7 +70,7 @@ Pull requests are welcome! For significant changes, please open an issue first t
 
 ## Developer
 
-**Asmita Rajbhar**
+**Asmita Rajbhar  Srishti Tripathi  Hemlata Mishra**
 
 B.Tech (Information Technology)
 
