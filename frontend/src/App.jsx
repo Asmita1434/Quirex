@@ -21,6 +21,7 @@ import UserProfile from "./components/userComponents/UserProfile";
 import ContactUs from "./components/landingComponents/ContactUs";
 import Search from "./components/landingComponents/Search";
 import ChatBot from "./components/ChatBot";
+import ScrollToTop from "./components/ScrollToTop";
 import "aos/dist/aos.css";
 import "aos/dist/aos.js";
 import Aos from "aos";
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <>
+      <ScrollToTop />
       <TopNavbar />
       {/* <Navbar /> */}
       <Routes>
@@ -67,12 +69,12 @@ function App() {
         <Route path="/register" element={<UserRegister />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
-        <Route path="/search" element={<Search/>}/>
-        <Route path="/property-page" element={<ListingPage/>}/>
-        <Route path="/returnpolicy" element={<ReturnPolicy/>}/>
-        <Route path="/refundpolicy" element={<RefundPolicy/>}/>
-        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
-        <Route path="/disclaimer" element={<Disclaimer/>}/>
+        <Route path="/search" element={<Search />} />
+        <Route path="/property-page" element={<ListingPage />} />
+        <Route path="/returnpolicy" element={<ReturnPolicy />} />
+        <Route path="/refundpolicy" element={<RefundPolicy />} />
+        <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
 
         {/* admin Section  */}
         {userData?.userType == "admin" && (

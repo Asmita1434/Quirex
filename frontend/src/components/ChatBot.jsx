@@ -9,6 +9,7 @@ const ChatBot = () => {
     const [language, setLanguage] = useState("en");
     const [message, setMessage] = useState("");
     const [typing, setTyping] = useState(false);
+    const [showHint, setShowHint] = useState(true);
 
     const [messages, setMessages] = useState([
         {
@@ -23,6 +24,24 @@ const ChatBot = () => {
     useEffect(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
+
+    useEffect(() => {
+        if (open) {
+            setShowHint(false);
+            return;
+        }
+
+        const interval = setInterval(() => {
+            setShowHint(true);
+
+            setTimeout(() => {
+                setShowHint(false);
+            }, 5000);
+
+        }, 12000);
+
+        return () => clearInterval(interval);
+    }, [open]);
 
     const addBotMessage = (text) => {
         setMessages((prev) => [
@@ -107,10 +126,22 @@ const ChatBot = () => {
 
     return (
         <>
-            <div className="chatbot-btn" onClick={() => setOpen(!open)}>
-                <BsChatDotsFill />
-            </div>
+            <div className="chatbot-wrapper">
 
+                {showHint && !open && (
+                    <div className="chatbot-hint">
+                        👋 Hi! Need any help?
+                    </div>
+                )}
+
+                <div
+                    className="chatbot-btn"
+                    onClick={() => setOpen(!open)}
+                >
+                    <BsChatDotsFill />
+                </div>
+
+            </div>
             {open && (
                 <div className="chat-window">
 
