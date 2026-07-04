@@ -22,29 +22,6 @@ const Property = () => {
 
   }
    
-  const handleBuy = async (propertyId) => {
-    const userData = JSON.parse(localStorage.getItem('userInfo'));
-
-    if (!userData?._id) {
-      navigate('/login')
-      return
-    }
-
-    const response = await API.post('/api/buy', { userId: userData?._id, propertyId });
-    if (response?.data?.code == 200) {
-      Swal.fire({
-        title: "Buy Property",
-        text: response?.data?.message,
-        icon: "success"
-      })
-    } else {
-      Swal.fire({
-        title: "Buy Property",
-        text: response?.data?.message,
-        icon: "error"
-      })
-    }
-  }
 
   const handleListingPage = async (propertyId) => {
     localStorage.setItem('propertyId', propertyId);
