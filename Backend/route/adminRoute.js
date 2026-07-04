@@ -69,15 +69,22 @@ adminRoute.get('/property-list', async (req, res) => {
 
 adminRoute.get('/property-page', async (req, res) => {
     try {
-        const {_id} = req.body;
-        const result = await propertyModel.findById(_id);
+        const { propertyId } = req.query;
+        const result = await propertyModel.findById(propertyId);
         
+        if (result) {
             res.json({
                 code: 200,
                 message: "Data fetched successfully..",
                 data: result
-            })
-        
+            });
+        } else {
+            res.json({
+                code: 400,
+                message: "Property Not Found.",
+                data: null
+            });
+        }
 
     } catch (err) {
         res.json({

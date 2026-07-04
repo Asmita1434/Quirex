@@ -3,23 +3,68 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import NavBar from './NavBar';
 import API from "../../utils/api";
+import {
+  FaMapMarkerAlt,
+  FaTag,
+  FaRulerCombined,
+  FaShoppingCart,
+  FaCheckCircle,
+  FaShieldAlt,
+  FaHeadset,
+  FaHeart,
+  FaShareAlt,
+  FaBed,
+  FaBath,
+  FaCar,
+  FaSwimmingPool,
+  FaTree,
+  FaWifi,
+  FaSnowflake,
+  FaHome,
+  FaCalendarAlt,
+  FaUser,
+} from "react-icons/fa";
 
 const ListingPage = () => {
-  const [propertyData, setPropertyData] = useState([])
+  const [propertyData, setPropertyData] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [isFavourite, setIsFavourite] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
+
   useEffect(() => {
     fetchData()
   }, [])
 
   const fetchData = async () => {
-    const propertyId = localStorage.getItem('propertyId');
-    const response = await API.get('/api/property-page',{propertyId});
-    if (response?.data?.code == 200) {
-      setPropertyData(response?.data?.data)
-      localStorage.removeItem('propertyId');
-    }
+    try {
+      setLoading(true);
 
+      const propertyId = localStorage.getItem("propertyId");
+
+      if (!propertyId) {
+        console.log("Property ID not found");
+        return;
+      }
+
+      const response = await API.get("/api/property-page", {
+        params: { propertyId },
+      });
+       if (response?.data?.code === 200) {
+        setPropertyData(response?.data?.data);
+      }
+    } catch (error) {
+      console.error("Error fetching property:", error);
+
+      Swal.fire({
+        title: "Error",
+        text: "Unable to load property details.",
+        icon: "error",
+      });
+    } finally {
+      setLoading(false);
+    }
   }
    
   const handleBuy = async (propertyId) => {
@@ -45,49 +90,353 @@ const ListingPage = () => {
       })
     }
   }
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: propertyData?.title,
+          text: propertyData?.description,
+          url: window.location.href,
+        });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+
+        Swal.fire({
+          title: "Link Copied",
+          text: "Property link copied to clipboard.",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.log("Share cancelled");
+    }
+  };
+
+  if (loading) {
+    return (
+      <>
+        {location?.pathname !== "/" && <NavBar />}
+        <div className="property-loader">
+          <div className="spinner-border text-danger"></div>
+          <p>Loading property details...</p>
+        </div>
+      </>
+    );
+  }
+
+   if (!propertyData) {
+    return (
+      <>
+        {location?.pathname !== "/" && <NavBar />}
+        <div className="property-not-found">
+          <FaHome />
+          <h2>Property Not Found</h2>
+          <p>The property you are looking for is unavailable.</p>
+        </div>
+      </>
+    );
+  }
+
+  const imageUrl = `${import.meta.env.VITE_API_URL}/img/${propertyData?.pic}`;
+
   return (
     <>
        {location?.pathname != "/" && <NavBar />}
-       <div className="row mt-3">
-        <div className="col-sm-11 mx-auto">
-          <div className="tagline">Property</div>
-          <div className="row mx-auto">
-            <div className="col-5 aboutDiv">
-              <h2 className="headAbout">{propertyData?.title}</h2>
-              <p className="aboutP mb-3">
+       <main className="property-page">
+        <div className="property-container">
+
+          {/* Breadcrumb */}
+          <div className="property-breadcrumb">
+            <span onClick={() => navigate("/")}>Home</span>
+            <span>›</span>
+            <span>Property</span>
+            <span>›</span>
+            <strong>{propertyData?.title}</strong>
+          </div>
+
+          {/* Main Section */}
+          <section className="property-main-grid">
+
+            {/* LEFT SIDE */}
+            <div className="property-information">
+
+              <span className="property-category">Property</span>
+
+              <h1>{propertyData?.title}</h1>
+
+              <div className="property-location">
+                <FaMapMarkerAlt />
+                <span>{propertyData?.location}</span>
+              </div>
+
+              <p className="property-description">
                 {propertyData?.description}
               </p>
-              <p className="aboutP">
-                <span className="mycolor1"><span className="dash">&#8212;</span></span>&nbsp;&nbsp;&nbsp; <b>Price</b> – {propertyData?.price}
-              </p>
-              <p className="aboutP">
-                <span className="mycolor1"><span className="dash">&#8212;</span>&nbsp;&nbsp;</span>&nbsp; <b>Area</b> – {propertyData?.area}
-              </p>
-              <p className="aboutP">
-                <span className="mycolor1"><span className="dash">&#8212;</span>&nbsp;&nbsp;</span>&nbsp; <b>Location</b> – {propertyData?.location}
-              </p>
-              <p className="aboutP">
-                <button onClick={() => handleBuy(propertyData?._id)} className='btn buy mx-auto mt-3'>Buy</button>
 
-              </p>
+              {/* Property Stats Card */}
+              <div className="property-stats-card">
+
+                <div className="property-stat">
+                  <div className="stat-icon">
+                    <FaTag />
+                  </div>
+
+                  <div>
+                    <span>Price</span>
+                    <strong>
+                      ₹ {Number(propertyData?.price || 0).toLocaleString("en-IN")}
+                    </strong>
+                  </div>
+                </div>
+
+                <div className="property-stat">
+                  <div className="stat-icon">
+                    <FaRulerCombined />
+                  </div>
+
+                  <div>
+                    <span>Area</span>
+                    <strong>{propertyData?.area} sq ft</strong>
+                  </div>
+                </div>
+
+                <div className="property-stat">
+                  <div className="stat-icon">
+                    <FaMapMarkerAlt />
+                  </div>
+
+                  <div>
+                    <span>Location</span>
+                    <strong>{propertyData?.location}</strong>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Buy Button */}
+              <button
+                className="property-buy-btn"
+                onClick={() => handleBuy(propertyData?._id)}
+              >
+                <FaShoppingCart />
+                Buy Now
+              </button>
+
+              {/* Trust Features */}
+              <div className="property-trust-features">
+                <span>
+                  <FaCheckCircle />
+                  Verified Property
+                </span>
+
+                <span>
+                  <FaShieldAlt />
+                  Secure Payment
+                </span>
+
+                <span>
+                  <FaHeadset />
+                  24/7 Support
+                </span>
+              </div>
+
             </div>
-            <div className="col-1"></div>
-            <div
-              className="col-6 aboutDiv"
-              data-aos="fade-left"
-              data-aos-anchor="#example-anchor"
-              data-aos-offset="500"
-              data-aos-duration="500"
-            >
-              <div className="row mt-3">
-                <div className="col-12 leftImgDiv px-3">
-                  <img src={`${import.meta.env.VITE_API_URL}/img/${propertyData?.pic}`} height={"480"} alt="not found" />
+
+            {/* RIGHT SIDE - IMAGE */}
+            <div className="property-gallery">
+
+              <span className="sale-badge">For Sale</span>
+
+              <div className="gallery-actions">
+                <button
+                  onClick={() => setIsFavourite(!isFavourite)}
+                  className={isFavourite ? "active-favourite" : ""}
+                >
+                  <FaHeart />
+                </button>
+
+                <button onClick={handleShare}>
+                  <FaShareAlt />
+                </button>
+              </div>
+
+              <img
+                src={imageUrl}
+                alt={propertyData?.title}
+                className="property-main-image"
+              />
+
+              {/* Thumbnail Strip */}
+              <div className="property-thumbnails">
+                <img src={imageUrl} alt="Property view" />
+                <img src={imageUrl} alt="Property view" />
+                <img src={imageUrl} alt="Property view" />
+                <img src={imageUrl} alt="Property view" />
+
+                <div className="more-images">
+                  <img src={imageUrl} alt="More views" />
+                  <span>+ More</span>
                 </div>
               </div>
+
             </div>
-          </div>
+          </section>
+
+          {/* DETAILS SECTION */}
+          <section className="property-details-grid">
+
+            {/* Overview */}
+            <div className="property-detail-card">
+              <h3>
+                <FaHome />
+                Overview
+              </h3>
+
+              <p>
+                {propertyData?.description} This premium property offers
+                comfort, modern design and an excellent location for luxury
+                living.
+              </p>
+
+              <div className="overview-features">
+                <span>
+                  <FaBed />
+                  4 Bedrooms
+                </span>
+
+                <span>
+                  <FaBath />
+                  3 Bathrooms
+                </span>
+
+                <span>
+                  <FaCar />
+                  2 Parking
+                </span>
+              </div>
+            </div>
+
+            {/* Amenities */}
+            <div className="property-detail-card">
+              <h3>
+                <FaCheckCircle />
+                Amenities
+              </h3>
+
+              <div className="amenities-grid">
+                <span>
+                  <FaSwimmingPool />
+                  Private Pool
+                </span>
+
+                <span>
+                  <FaTree />
+                  Garden
+                </span>
+
+                <span>
+                  <FaHome />
+                  Club House
+                </span>
+
+                <span>
+                  <FaShieldAlt />
+                  24/7 Security
+                </span>
+
+                <span>
+                  <FaWifi />
+                  Wi-Fi
+                </span>
+
+                <span>
+                  <FaSnowflake />
+                  Air Conditioning
+                </span>
+              </div>
+            </div>
+
+            {/* Highlights */}
+            <div className="property-detail-card">
+              <h3>
+                <FaCheckCircle />
+                Highlights
+              </h3>
+
+              <ul className="property-highlights">
+                <li>
+                  <FaCheckCircle />
+                  Spacious living and dining area
+                </li>
+
+                <li>
+                  <FaCheckCircle />
+                  Premium quality construction
+                </li>
+
+                <li>
+                  <FaCheckCircle />
+                  Close to schools, hospitals & malls
+                </li>
+
+                <li>
+                  <FaCheckCircle />
+                  Well-connected to major roads
+                </li>
+              </ul>
+            </div>
+
+          </section>
+
+          {/* BOTTOM INFO BAR */}
+          <section className="property-bottom-bar">
+
+            <div className="bottom-info-item">
+              <div className="bottom-icon">
+                <FaHome />
+              </div>
+
+              <div>
+                <span>Property ID</span>
+                <strong>
+                  {propertyData?._id?.slice(-7)?.toUpperCase()}
+                </strong>
+              </div>
+            </div>
+
+            <div className="bottom-info-item">
+              <div className="bottom-icon">
+                <FaCalendarAlt />
+              </div>
+
+              <div>
+                <span>Status</span>
+                <strong>Available for Sale</strong>
+              </div>
+            </div>
+
+            <div className="bottom-info-item">
+              <div className="agent-avatar">
+                <FaUser />
+              </div>
+
+              <div>
+                <span>Property Assistance</span>
+                <strong>Quirex Support Team</strong>
+              </div>
+            </div>
+
+            <button className="contact-agent-btn">
+              Contact Agent
+            </button>
+
+          </section>
+
         </div>
-      </div>
+      </main>
     </>
   )
 }

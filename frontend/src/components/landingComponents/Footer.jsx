@@ -61,8 +61,8 @@ const Footer = () => {
 
               <Link to="/">Home</Link>
               <Link to="/about">About</Link>
-              <Link to="/services">Services</Link>
-              <Link to="/property">Properties</Link>
+              <Link to="/returnpolicy">Return Policy</Link>
+              <Link to="/refundpolicy">Refund Policy</Link>
               <Link to="/contact-us">Contact</Link>
             </div>
 
@@ -131,8 +131,8 @@ const Footer = () => {
 
         <div className="footer-links">
           <Link to="#">Terms</Link>
-          <Link to="#">Privacy Policy</Link>
-          <Link to="#">Support</Link>
+          <Link to="/privacypolicy">Privacy Policy</Link>
+          <Link to="/disclaimer">Disclaimer</Link>
         </div>
       </div>
     </>

@@ -27,6 +27,10 @@ import Aos from "aos";
 import { useEffect, useState } from "react";
 import NotFound from "./NotFound";
 import ListingPage from "./components/landingComponents/ListingPage";
+import ReturnPolicy from "./components/landingComponents/ReturnPolicy";
+import RefundPolicy from "./components/landingComponents/RefundPolicy";
+import PrivacyPolicy from "./components/landingComponents/PrivancyPolicy";
+import Disclaimer from "./components/landingComponents/Disclaimer";
 
 function App() {
   const location = useLocation();
@@ -65,6 +69,10 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/search" element={<Search/>}/>
         <Route path="/property-page" element={<ListingPage/>}/>
+        <Route path="/returnpolicy" element={<ReturnPolicy/>}/>
+        <Route path="/refundpolicy" element={<RefundPolicy/>}/>
+        <Route path="/privacypolicy" element={<PrivacyPolicy/>}/>
+        <Route path="/disclaimer" element={<Disclaimer/>}/>
 
         {/* admin Section  */}
         {userData?.userType == "admin" && (
