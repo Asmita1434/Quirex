@@ -70,11 +70,11 @@ const Footer = () => {
             <div className="col-6 col-md-3 col-lg-2">
               <h5>Services</h5>
 
-              <Link to="#">Buy Property</Link>
-              <Link to="#">Rent Property</Link>
-              <Link to="#">Sell Property</Link>
-              <Link to="#">Property Search</Link>
-              <Link to="#">Customer Support</Link>
+              <Link to="/property">Buy Property</Link>
+              <Link to="/property">Rent Property</Link>
+              <Link to="/property">Sell Property</Link>
+              <Link to="/property">Property Search</Link>
+              <Link to="/contact-us">Customer Support</Link>
             </div>
 
             {/* Account */}
@@ -130,7 +130,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-links">
-          <Link to="#">Terms</Link>
+          <Link to="/privacypolicy">Terms</Link>
           <Link to="/privacypolicy">Privacy Policy</Link>
           <Link to="/disclaimer">Disclaimer</Link>
         </div>

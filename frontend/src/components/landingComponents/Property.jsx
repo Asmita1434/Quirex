@@ -84,7 +84,7 @@ const Property = () => {
                       <h5 className="card-title"><b className='mycolor2'>{item?.title}</b></h5>
                       <p className="card-text featuredp ">{item?.description}</p>
 
-                      <button onClick={() => handleBuy(item?._id)} className='btn buy mx-auto mt-3'>Buy</button>
+                      <button onClick={() => handleListingPage(item?._id)} className='btn buy mx-auto mt-3'>Buy</button>
 
                     </div>
 
