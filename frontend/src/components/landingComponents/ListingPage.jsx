@@ -67,29 +67,163 @@ const ListingPage = () => {
     }
   }
    
+  const loadRazorpayScript = () => {
+    return new Promise((resolve, reject) => {
+      if (window.Razorpay) return resolve(true);
+
+      const existingScript = document.querySelector(
+        'script[src="https://checkout.razorpay.com/v1/checkout.js"]'
+      );
+      if (existingScript) {
+        existingScript.addEventListener('load', () => resolve(true));
+        existingScript.addEventListener('error', () =>
+          reject(new Error('Razorpay SDK failed to load'))
+        );
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+      script.async = true;
+      script.onload = () => resolve(true);
+      script.onerror = () => reject(new Error('Razorpay SDK failed to load'));
+      document.body.appendChild(script);
+    });
+  };
+
   const handleBuy = async (propertyId) => {
     const userData = JSON.parse(localStorage.getItem('userInfo'));
 
     if (!userData?._id) {
-      navigate('/login')
-      return
+      navigate('/login');
+      return;
     }
 
-    const response = await API.post('/api/buy', { userId: userData?._id, propertyId });
-    if (response?.data?.code == 200) {
+    try {
+      const priceInRupees = Number(propertyData?.price || 0);
+      const amountPaise = Math.round(priceInRupees * 100);
+
+      if (!Number.isFinite(amountPaise) || amountPaise < 100) {
+        Swal.fire({
+          title: 'Invalid Amount',
+          text: 'Minimum amount is ₹1.00',
+          icon: 'error',
+        });
+        return;
+      }
+
+      await loadRazorpayScript();
+
+      const receipt = `rcpt_${userData?._id}_${propertyId}`.slice(0, 40);
+
+      const createOrderRes = await API.post('/api/create-order', {
+        amount: amountPaise,
+        currency: 'INR',
+        receipt,
+      });
+
+      if (createOrderRes?.data?.code !== 200) {
+        Swal.fire({
+          title: 'Payment',
+          text:
+            createOrderRes?.data?.message ||
+            'Unable to create Razorpay order',
+          icon: 'error',
+        });
+        return;
+      }
+
+      const { order_id, amount, currency } =
+        createOrderRes?.data?.data || {};
+
+      const razorpayKeyId = import.meta.env.VITE_RAZORPAY_KEY_ID;
+      if (!razorpayKeyId) {
+        console.log('Missing VITE_RAZORPAY_KEY_ID', import.meta.env);
+        Swal.fire({
+          title: 'Payment Configuration',
+          text: 'Razorpay key is missing on frontend. Check frontend/.env and restart dev server.',
+          icon: 'error',
+        });
+        return;
+      }
+
+
+      const options = {
+        key: razorpayKeyId,
+        amount,
+        currency,
+        name: 'Quirex',
+        description: `Payment for ${propertyData?.title || 'Property'}`,
+        order_id,
+        handler: async function (response) {
+          const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
+            response || {};
+
+          try {
+            const verifyRes = await API.post('/api/verify-payment', {
+              razorpay_payment_id,
+              razorpay_order_id,
+              razorpay_signature,
+            });
+
+            if (verifyRes?.data?.code === 200) {
+              const buyRes = await API.post('/api/buy', {
+                userId: userData?._id,
+                propertyId,
+              });
+
+              Swal.fire({
+                title: 'Payment Success',
+                text: buyRes?.data?.message || 'Property Bought Successfully',
+                icon: 'success',
+              });
+            } else {
+              Swal.fire({
+                title: 'Payment Verification Failed',
+                text: verifyRes?.data?.message || 'Signature mismatch',
+                icon: 'error',
+              });
+            }
+          } catch (err) {
+            Swal.fire({
+              title: 'Verification Error',
+              text: err?.response?.data?.message || 'Could not verify payment',
+              icon: 'error',
+            });
+          }
+        },
+        modal: {
+          ondismiss: function () {
+            Swal.fire({
+              title: 'Payment Cancelled',
+              text: 'You cancelled the payment.',
+              icon: 'info',
+            });
+          },
+        },
+        theme: { color: '#3399cc' },
+      };
+
+      const rzp = new window.Razorpay(options);
+
+      rzp.on('payment.failed', function (response) {
+        Swal.fire({
+          title: 'Payment Failed',
+          text: response?.error?.description || 'Something went wrong',
+          icon: 'error',
+        });
+      });
+
+      rzp.open(options);
+    } catch (err) {
       Swal.fire({
-        title: "Buy Property",
-        text: response?.data?.message,
-        icon: "success"
-      })
-    } else {
-      Swal.fire({
-        title: "Buy Property",
-        text: response?.data?.message,
-        icon: "error"
-      })
+        title: 'Payment Error',
+        text: err?.response?.data?.message || err?.message || 'Unable to start checkout',
+        icon: 'error',
+      });
     }
   }
+
 
   const handleShare = async () => {
     try {
