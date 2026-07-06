@@ -1211,24 +1211,6 @@ font-size:24px;
 }
 
 }
-/* .chatbot-btn{
-    position:fixed;
-    right:20px;
-    bottom:58px;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    background:#eb2e0c;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:28px;
-    cursor:pointer;
-    z-index:9999;
-    box-shadow:0 10px 30px rgba(235,46,12,.35);
-    transition:.3s;
-} */
 
 /* ================= WINDOW ================= */
 
@@ -2299,7 +2281,7 @@ box-shadow:0 5px 15px rgba(235,46,12,.35);
   transform: translateX(-3px);
 }
 
-/* Hero */
+/* privacy-policy */
 
 .policy-hero {
   position: relative;

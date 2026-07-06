@@ -494,7 +494,7 @@ const RefundPolicy = () => {
                 </div>
 
                 <button
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/contact-us")}
                   className="refund-contact-btn"
                 >
                   Contact Support

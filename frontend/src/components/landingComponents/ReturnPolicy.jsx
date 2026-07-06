@@ -329,7 +329,7 @@ const ReturnPolicy = () => {
 
                 <button
                   className="contact-support-btn"
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/contact-us")}
                 >
                   Contact Support
                 </button>

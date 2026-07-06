@@ -634,7 +634,7 @@ const PrivacyPolicy = () => {
 
                 <button
                   className="privacy-contact-btn"
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/contact-us")}
                 >
                   Contact Us
                 </button>

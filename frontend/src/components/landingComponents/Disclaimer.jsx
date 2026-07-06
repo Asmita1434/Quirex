@@ -561,7 +561,7 @@ const Disclaimer = () => {
 
                 <button
                   className="disclaimer-contact-btn"
-                  onClick={() => navigate("/contact")}
+                  onClick={() => navigate("/contact-us")}
                 >
                   Contact Us
                 </button>

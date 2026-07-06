@@ -563,7 +563,7 @@ const ListingPage = () => {
               </div>
             </div>
 
-            <button className="contact-agent-btn">
+            <button className="contact-agent-btn"  onClick={() => navigate("/contact-us")}>
               Contact Agent
             </button>
 
