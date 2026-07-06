@@ -62,7 +62,7 @@ Quirex provides separate modules for Users and Admins, making property managemen
 
 # ✨ Key Features
 
-## 🏡 Property Management
+# 🏡 Property Management
 
 - Property Listings
 - Featured Properties
@@ -84,7 +84,7 @@ Quirex provides separate modules for Users and Admins, making property managemen
 
 ---
 
-## 👤 Authentication
+# 👤 Authentication
 
 - User Registration
 - Secure Login
@@ -95,7 +95,7 @@ Quirex provides separate modules for Users and Admins, making property managemen
 
 ---
 
-## 🤖 Chatbot
+# 🤖 Chatbot
 
 Quirex comes with an intelligent chatbot that assists users in:
 
@@ -108,24 +108,13 @@ Quirex comes with an intelligent chatbot that assists users in:
 
 ---
 
-## 💳 Razorpay Payment Integration
+# 💳 Razorpay Payment Integration
 
 Secure online payments powered by Razorpay.
 
-Features include:
-
-- Secure Payment Gateway
-- Online Property Purchase
-- Payment Verification
-- Transaction Success Handling
-- Payment Failure Handling
-- Order Creation
-- Seamless Checkout Experience
-
-
 ---
 
-## 📩 Contact Module
+# Contact Module
 
 Users can
 
@@ -135,7 +124,7 @@ Users can
 
 ---
 
-## 📄 Privacy Policy
+# Privacy Policy
 
 The application includes a complete Privacy Policy page explaining:
 
@@ -183,7 +172,7 @@ Users can
 
 # ⚙️ Tech Stack
 
-## Frontend
+# Frontend
 
 - React.js
 - React Router
@@ -196,7 +185,7 @@ Users can
 
 ---
 
-## Backend
+# Backend
 
 - Node.js
 - Express.js
@@ -209,21 +198,21 @@ Users can
 
 ---
 
-## Database
+# Database
 
 - MongoDB Atlas
 - Mongoose ODM
 
 ---
 
-## Deployment
+# Deployment
 
 - Render (Frontend)
 - Render (Backend)
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```
 Quirex
@@ -249,7 +238,7 @@ Quirex
 ```
 ---
 
-## 📡 API Features
+# API Features
 
 - Authentication APIs
 - Property APIs
@@ -260,7 +249,7 @@ Quirex
 
 ---
 
-# 🔒 Security Features
+#  Security Features
 
 - JWT Authentication
 - Password Hashing
@@ -272,7 +261,7 @@ Quirex
 
 ---
 
-# 🚀 Performance Improvements
+#  Performance Improvements
 
 - Optimized Search
 - Responsive Design
@@ -283,7 +272,7 @@ Quirex
 
 ---
 
-# 🎯 Future Enhancements
+#  Future Enhancements
 
 - ❤️ Wishlist
 - 📍 Google Maps Integration
