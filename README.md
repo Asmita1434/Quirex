@@ -1,4 +1,4 @@
-# 🏡 Quirex – AI Powered Smart Real Estate Platform
+# 🏡 Quirex – Smart Real Estate Platform
 
 <p align="center">
 
@@ -12,14 +12,13 @@
 </p>
 
 <p align="center">
-A modern AI-powered Real Estate Platform where users can discover, purchase, and manage properties with secure online payments, intelligent chatbot support, and a responsive user experience.
+A modern  Real Estate Platform where users can discover, purchase, and manage properties with secure online payments, intelligent chatbot support, and a responsive user experience.
 </p>
 
 ---
 
 # 🌐 Live Demo
 
-### 🔗 Frontend
 https://quirex-frontend.onrender.com/
 
 ### 💻 GitHub Repository
@@ -33,16 +32,13 @@ https://github.com/Asmita1434/Quirex
 - Features
 - User Features
 - Admin Features
-- AI Chatbot
+- AChatbot
 - Payment Integration
 - Tech Stack
 - Folder Structure
-- Installation
-- Environment Variables
 - API Features
 - Future Enhancements
 - Developer Team
-- License
 
 ---
 
@@ -99,13 +95,12 @@ Quirex provides separate modules for Users and Admins, making property managemen
 
 ---
 
-## 🤖 AI Chatbot
+## 🤖 Chatbot
 
 Quirex comes with an intelligent chatbot that assists users in:
 
 - Property Search
 - Website Navigation
-- Buying Guidance
 - Frequently Asked Questions
 - English Support
 - Hindi Support
@@ -127,14 +122,6 @@ Features include:
 - Order Creation
 - Seamless Checkout Experience
 
----
-
-## 📷 Image Management
-
-- Property Image Upload
-- Multiple Images
-- Image Preview
-- Cloud Storage Integration
 
 ---
 
@@ -161,16 +148,6 @@ The application includes a complete Privacy Policy page explaining:
 
 ---
 
-## 📱 Responsive Design
-
-Fully responsive across
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile
-
----
 
 # 👨‍💼 Admin Features
 
@@ -183,9 +160,6 @@ Admin Dashboard includes
 - Delete Property
 - Manage Users
 - Contact Requests
-- Purchase Management
-- Payment Records
-- Property Listings Management
 
 ---
 
@@ -201,7 +175,7 @@ Users can
 - Purchase Property
 - Pay Online
 - Contact Admin
-- Use AI Chatbot
+- Use Chatbot
 - View Privacy Policy
 - Logout Securely
 
@@ -272,65 +246,6 @@ Quirex
 │   └── Uploads
 │
 └── README.md
-```
-
----
-
-# 🚀 Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/Asmita1434/Quirex.git
-```
-
----
-
-## Install Frontend
-
-```bash
-cd Frontend
-npm install
-npm run dev
-```
-
----
-
-## Install Backend
-
-```bash
-cd Backend
-npm install
-npm run dev
-```
-
----
-
-# 🔑 Environment Variables
-
-Create a `.env` file inside Backend.
-
-```
-PORT=
-
-MONGO_URI=
-
-JWT_SECRET=
-
-CLOUDINARY_CLOUD_NAME=
-
-CLOUDINARY_API_KEY=
-
-CLOUDINARY_API_SECRET=
-
-EMAIL_USER=
-
-EMAIL_PASS=
-
-RAZORPAY_KEY_ID=
-
-RAZORPAY_KEY_SECRET=
-```
 
 ---
 
@@ -341,7 +256,6 @@ RAZORPAY_KEY_SECRET=
 - User APIs
 - Contact APIs
 - Razorpay Payment APIs
-- Chatbot APIs
 - Admin APIs
 
 ---
@@ -449,8 +363,12 @@ It motivates us to build more amazing open-source projects.
 
 ---
 
-# 📜 License
+# 📚 Academic Project
 
-This project is developed for educational and learning purposes.
+Quirex is an academic **Final Year Major Project** developed as part of the B.Tech (Information Technology) curriculum at the Institute of Engineering and Technology (IET), Ayodhya.
+
+The project is intended for educational, learning, and demonstration purposes.
 
 © 2026 Quirex Team. All Rights Reserved.
+
+
