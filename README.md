@@ -1,77 +1,456 @@
-# 🏠 Quirex - Smart Real Estate Platform
+# 🏡 Quirex – AI Powered Smart Real Estate Platform
 
-![React](https://img.shields.io/badge/React-19-blue)
-![Node.js](https://img.shields.io/badge/Node.js-Backend-green)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-5-purple)
-![Render](https://img.shields.io/badge/Deploy-Render-orange)
+<p align="center">
 
-A modern real estate platform where users can search, explore, and manage properties with ease.
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=node.js)
+![Express](https://img.shields.io/badge/Express.js-Backend-black?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)
+![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge)
+![Razorpay](https://img.shields.io/badge/Payments-Razorpay-0C2451?style=for-the-badge)
 
-## Overview
+</p>
 
-Quirex is a full-stack real estate platform designed to help users discover, explore, and manage properties through a modern and user-friendly interface.
+<p align="center">
+A modern AI-powered Real Estate Platform where users can discover, purchase, and manage properties with secure online payments, intelligent chatbot support, and a responsive user experience.
+</p>
 
-The platform allows users to search properties by location, view detailed property information, purchase available properties, and interact with a built-in chatbot assistant. With dedicated Admin and User functionalities, Quirex provides a complete property management experience.
+---
 
-## Live Demo
+# 🌐 Live Demo
 
-[Quirex Live Demo](https://quirex-frontend.onrender.com/)
+### 🔗 Frontend
+https://quirex-frontend.onrender.com/
 
-## Features
+### 💻 GitHub Repository
+https://github.com/Asmita1434/Quirex
 
-🏠 Property Listings – Add and view property details with images.
+---
 
-🔍 Smart Property Search – Search properties by location with an improved user experience.
+# 📖 Table of Contents
 
-👤 User Authentication – Secure login and registration system with role-based access.
+- About
+- Features
+- User Features
+- Admin Features
+- AI Chatbot
+- Payment Integration
+- Tech Stack
+- Folder Structure
+- Installation
+- Environment Variables
+- API Features
+- Future Enhancements
+- Developer Team
+- License
 
-📷 Image Uploads – Upload and manage property images.
+---
 
-🤖 Quirex Assistant Chatbot – Interactive chatbot with English and Hindi language support.
+# 🏠 About Quirex
 
-📋 Property Purchase Management – Users can explore and purchase available properties.
+Quirex is a Full Stack MERN-based Real Estate Platform developed to simplify property buying and management.
 
-📞 Contact Management – Users can submit inquiries through the Contact Us page.
+The platform enables users to:
 
-🌐 Responsive UI – Works seamlessly across desktops, tablets, and mobile devices.
+- Browse premium property listings
+- Search properties by location
+- View detailed property information
+- Purchase properties securely
+- Contact property administrators
+- Chat with an AI-powered multilingual assistant
+- Manage their account through a modern dashboard
 
-🚀 Deployed on Render – Frontend and backend hosted on Render.
+Quirex provides separate modules for Users and Admins, making property management secure, scalable, and user-friendly.
 
-## 🛠️ Tech Stack
+---
 
-- **MongoDB Atlas** – Database for storing application data
-- **Express.js** – Backend framework for building REST APIs
-- **React.js** – Frontend user interface development
-- **Node.js** – Backend runtime environment
-- **Axios** – API communication
-- **React Hook Form** – Form handling
-- **Yup** – Form validation
-- **SweetAlert2** – Alerts and notifications
-- **Bootstrap** – Responsive UI components
-- **React Icons** – Icons and UI enhancements
-- **Render** – Frontend and backend deployment
+# ✨ Key Features
 
+## 🏡 Property Management
 
-## Future Enhancements
+- Property Listings
+- Featured Properties
+- Detailed Property Pages
+- Property Images
+- Property Status
+- Property Categories
+- Property Pricing
+- Property Availability
 
-- Advanced property filters and sorting
-- Property wishlist feature
-- Google Maps integration
-- AI-powered property recommendations
-- Email notification system
-- Online property booking functionality
-- Property comparison feature
-- Enhanced chatbot capabilities
+---
 
-## Contributing
+## 🔍 Smart Search
 
-Pull requests are welcome! For significant changes, please open an issue first to discuss what you would like to change.
+- Search by Location
+- Instant Search Results
+- Responsive Search Experience
+- Optimized Property Browsing
 
-## Developer
+---
 
-**Asmita Rajbhar <> Srishti Tripathi <> Hemlata Mishra**
+## 👤 Authentication
 
-B.Tech (Information Technology)
+- User Registration
+- Secure Login
+- JWT Authentication
+- Password Encryption
+- Protected Routes
+- Role Based Authorization
+
+---
+
+## 🤖 AI Chatbot
+
+Quirex comes with an intelligent chatbot that assists users in:
+
+- Property Search
+- Website Navigation
+- Buying Guidance
+- Frequently Asked Questions
+- English Support
+- Hindi Support
+- Fast User Assistance
+
+---
+
+## 💳 Razorpay Payment Integration
+
+Secure online payments powered by Razorpay.
+
+Features include:
+
+- Secure Payment Gateway
+- Online Property Purchase
+- Payment Verification
+- Transaction Success Handling
+- Payment Failure Handling
+- Order Creation
+- Seamless Checkout Experience
+
+---
+
+## 📷 Image Management
+
+- Property Image Upload
+- Multiple Images
+- Image Preview
+- Cloud Storage Integration
+
+---
+
+## 📩 Contact Module
+
+Users can
+
+- Send Contact Requests
+- Submit Queries
+- Reach Property Administrators
+
+---
+
+## 📄 Privacy Policy
+
+The application includes a complete Privacy Policy page explaining:
+
+- User Data Collection
+- Data Usage
+- Cookies
+- Security
+- User Rights
+- Contact Information
+
+---
+
+## 📱 Responsive Design
+
+Fully responsive across
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+---
+
+# 👨‍💼 Admin Features
+
+Admin Dashboard includes
+
+- Dashboard Overview
+- Property Management
+- Add Property
+- Update Property
+- Delete Property
+- Manage Users
+- Contact Requests
+- Purchase Management
+- Payment Records
+- Property Listings Management
+
+---
+
+# 👨‍💻 User Features
+
+Users can
+
+- Register
+- Login
+- Browse Properties
+- Search Properties
+- View Details
+- Purchase Property
+- Pay Online
+- Contact Admin
+- Use AI Chatbot
+- View Privacy Policy
+- Logout Securely
+
+---
+
+# ⚙️ Tech Stack
+
+## Frontend
+
+- React.js
+- React Router
+- Bootstrap 5
+- Axios
+- React Hook Form
+- Yup Validation
+- SweetAlert2
+- React Icons
+
+---
+
+## Backend
+
+- Node.js
+- Express.js
+- JWT Authentication
+- Multer
+- Cloudinary
+- Razorpay SDK
+- Nodemailer
+- REST API
+
+---
+
+## Database
+
+- MongoDB Atlas
+- Mongoose ODM
+
+---
+
+## Deployment
+
+- Render (Frontend)
+- Render (Backend)
+
+---
+
+# 📂 Project Structure
+
+```
+Quirex
+│
+├── Frontend
+│   ├── Components
+│   ├── Pages
+│   ├── Assets
+│   ├── Context
+│   ├── Services
+│   └── Utils
+│
+├── Backend
+│   ├── Routes
+│   ├── Controllers
+│   ├── Models
+│   ├── Middleware
+│   ├── Config
+│   ├── Utils
+│   └── Uploads
+│
+└── README.md
+```
+
+---
+
+# 🚀 Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/Asmita1434/Quirex.git
+```
+
+---
+
+## Install Frontend
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+---
+
+## Install Backend
+
+```bash
+cd Backend
+npm install
+npm run dev
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside Backend.
+
+```
+PORT=
+
+MONGO_URI=
+
+JWT_SECRET=
+
+CLOUDINARY_CLOUD_NAME=
+
+CLOUDINARY_API_KEY=
+
+CLOUDINARY_API_SECRET=
+
+EMAIL_USER=
+
+EMAIL_PASS=
+
+RAZORPAY_KEY_ID=
+
+RAZORPAY_KEY_SECRET=
+```
+
+---
+
+# 📡 API Features
+
+- Authentication APIs
+- Property APIs
+- User APIs
+- Contact APIs
+- Razorpay Payment APIs
+- Chatbot APIs
+- Admin APIs
+
+---
+
+# 🔒 Security Features
+
+- JWT Authentication
+- Password Hashing
+- Protected Routes
+- Input Validation
+- Secure Payments
+- Environment Variables
+- Role-Based Access
+
+---
+
+# 🚀 Performance Improvements
+
+- Optimized Search
+- Responsive Design
+- Lazy Loading
+- Better UI Experience
+- Improved Listing Page
+- Faster Navigation
+
+---
+
+# 🎯 Future Enhancements
+
+- ❤️ Wishlist
+- 📍 Google Maps Integration
+- 🤖 AI Property Recommendation
+- 📅 Property Booking
+- ⭐ Property Reviews
+- 📊 Analytics Dashboard
+- 📱 Mobile Application
+- 🔔 Push Notifications
+- 📧 Email Notifications
+- 🌍 Multi-language Support
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+
+2. Create a new branch
+
+```
+git checkout -b feature-name
+```
+
+3. Commit your changes
+
+```
+git commit -m "Added new feature"
+```
+
+4. Push
+
+```
+git push origin feature-name
+```
+
+5. Open a Pull Request
+
+---
+
+# 👩‍💻 Developer Team
+
+### Asmita Rajbhar
+
+B.Tech Information Technology
 
 Institute of Engineering and Technology, Ayodhya
+
+GitHub:
+https://github.com/Asmita1434
+
+---
+
+### Srishti Tripathi
+
+B.Tech Information Technology
+
+Institute of Engineering and Technology, Ayodhya
+
+---
+
+### Hemlata Mishra
+
+B.Tech Information Technology
+
+Institute of Engineering and Technology, Ayodhya
+
+---
+
+# ⭐ If you like this project
+
+Please give this repository a ⭐ on GitHub.
+
+It motivates us to build more amazing open-source projects.
+
+---
+
+# 📜 License
+
+This project is developed for educational and learning purposes.
+
+© 2026 Quirex Team. All Rights Reserved.
