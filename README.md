@@ -364,10 +364,12 @@ Your support motivates us to continue building better open-source projects.
 
 # 📚 Academic Project
 
-Quirex is a **Final Year Major Project** developed during the **Final Year** of the **Bachelor of Technology (Information Technology)** program at the **Institute of Engineering and Technology (IET), Ayodhya**.
+Quirex is a **Final Year Major Project** developed as part of the **Bachelor of Technology (B.Tech) in Information Technology** curriculum at the **Institute of Engineering and Technology (IET), Ayodhya**.
 
-The project demonstrates the practical implementation of modern MERN Stack technologies, secure online payment integration using Razorpay, cloud database management with MongoDB Atlas, and a responsive web application for real estate management.
+The project demonstrates the practical implementation of modern **MERN Stack** technologies for building a secure and responsive **Real Estate Management Platform**. It integrates **React.js**, **Node.js**, **Express.js**, **MongoDB Atlas**, and **Razorpay Payment Gateway** to provide a seamless property buying and management experience.
+
+The project was developed for **educational, learning, and demonstration purposes**, showcasing modern web development practices, RESTful API integration, cloud database management, secure online payments, and responsive user interface design.
 
 ---
 
-© 2026 Quirex Team. All Rights Reserved.
+© 2026 **Quirex Team**. All Rights Reserved.
