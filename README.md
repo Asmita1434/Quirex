@@ -4,74 +4,74 @@
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-22-339933?style=for-the-badge&logo=node.js)
-![Express](https://img.shields.io/badge/Express.js-Backend-black?style=for-the-badge&logo=express)
+![Express.js](https://img.shields.io/badge/Express.js-5-000000?style=for-the-badge&logo=express)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=for-the-badge&logo=mongodb)
+![Razorpay](https://img.shields.io/badge/Razorpay-Payment-0C2451?style=for-the-badge)
 ![Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge)
-![Razorpay](https://img.shields.io/badge/Payments-Razorpay-0C2451?style=for-the-badge)
 
 </p>
 
 <p align="center">
-A modern  Real Estate Platform where users can discover, purchase, and manage properties with secure online payments, intelligent chatbot support, and a responsive user experience.
+A modern <b>MERN Stack Real Estate Platform</b> that enables users to explore, search, purchase, and manage properties through a secure, responsive, and user-friendly web application.
 </p>
 
 ---
 
 # 🌐 Live Demo
 
+### 🔗 Website
+
 https://quirex-frontend.onrender.com/
 
 ### 💻 GitHub Repository
+
 https://github.com/Asmita1434/Quirex
 
 ---
 
 # 📖 Table of Contents
 
-- About
-- Features
+- About Quirex
+- Key Features
 - User Features
 - Admin Features
-- AChatbot
-- Payment Integration
-- Tech Stack
-- Folder Structure
+- Chatbot
+- Razorpay Payment Integration
+- Contact Module
+- Privacy Policy
+- Technology Stack
+- Project Structure
 - API Features
+- Security Features
+- Performance Improvements
 - Future Enhancements
 - Developer Team
+- Academic Project
 
 ---
 
 # 🏠 About Quirex
 
-Quirex is a Full Stack MERN-based Real Estate Platform developed to simplify property buying and management.
+Quirex is a Full Stack MERN-based Smart Real Estate Platform developed as a Final Year Major Project for the Bachelor of Technology (Information Technology) program.
 
-The platform enables users to:
+The platform simplifies property searching, browsing, purchasing, and management through a modern web interface.
 
-- Browse premium property listings
-- Search properties by location
-- View detailed property information
-- Purchase properties securely
-- Contact property administrators
-- Chat with an AI-powered multilingual assistant
-- Manage their account through a modern dashboard
-
-Quirex provides separate modules for Users and Admins, making property management secure, scalable, and user-friendly.
+Quirex provides separate User and Admin modules with secure property management, online payment integration, multilingual chatbot assistance, and responsive user experience.
 
 ---
 
 # ✨ Key Features
 
-# 🏡 Property Management
+## 🏡 Property Management
 
 - Property Listings
 - Featured Properties
-- Detailed Property Pages
+- Property Details
 - Property Images
-- Property Status
 - Property Categories
 - Property Pricing
 - Property Availability
+- Modern Listing Interface
 
 ---
 
@@ -84,63 +84,68 @@ Quirex provides separate modules for Users and Admins, making property managemen
 
 ---
 
-# 👤 Authentication
+## 👤 User Authentication
 
 - User Registration
 - Secure Login
-- JWT Authentication
-- Password Encryption
-- Protected Routes
-- Role Based Authorization
+- Profile Management
+- Protected User Access
 
 ---
 
-# 🤖 Chatbot
+## 🤖 Chatbot
 
-Quirex comes with an intelligent chatbot that assists users in:
+Integrated multilingual chatbot providing:
 
-- Property Search
+- Property Assistance
 - Website Navigation
 - Frequently Asked Questions
 - English Support
 - Hindi Support
-- Fast User Assistance
+- Quick User Assistance
 
 ---
 
-# 💳 Razorpay Payment Integration
+## 💳 Razorpay Payment Integration
 
-Secure online payments powered by Razorpay.
+Secure online property purchase through Razorpay.
+
+Features include:
+
+- Secure Checkout
+- Order Creation
+- Payment Processing
+- Payment Verification
+- Transaction Confirmation
 
 ---
 
-# Contact Module
+## 📩 Contact Module
 
-Users can
+Users can:
 
-- Send Contact Requests
 - Submit Queries
-- Reach Property Administrators
+- Contact Administrators
+- Send Feedback
+- Request Assistance
 
 ---
 
-# Privacy Policy
+## 🔒 Privacy Policy
 
-The application includes a complete Privacy Policy page explaining:
+The application includes a dedicated Privacy Policy page describing:
 
-- User Data Collection
+- User Information Collection
 - Data Usage
-- Cookies
-- Security
+- Security Practices
 - User Rights
 - Contact Information
 
 ---
 
-
 # 👨‍💼 Admin Features
 
-Admin Dashboard includes
+The Admin Dashboard provides:
 
 - Dashboard Overview
 - Property Management
@@ -148,166 +153,171 @@ Admin Dashboard includes
 - Update Property
 - Delete Property
 - Manage Users
-- Contact Requests
+- View Contact Requests
+- Manage Property Records
 
 ---
 
 # 👨‍💻 User Features
 
-Users can
+Users can:
 
 - Register
 - Login
 - Browse Properties
 - Search Properties
-- View Details
-- Purchase Property
-- Pay Online
+- View Property Details
+- Purchase Properties
+- Make Secure Online Payments
 - Contact Admin
 - Use Chatbot
-- View Privacy Policy
+- Read Privacy Policy
 - Logout Securely
 
 ---
 
-# ⚙️ Tech Stack
+# ⚙️ Technology Stack
 
-# Frontend
+## Frontend
 
 - React.js
-- React Router
+- React Router DOM
 - Bootstrap 5
 - Axios
 - React Hook Form
 - Yup Validation
 - SweetAlert2
 - React Icons
+- AOS
+- React CountUp
+- Typewriter Effect
 
 ---
 
-# Backend
+## Backend
 
 - Node.js
 - Express.js
-- JWT Authentication
-- Multer
-- Cloudinary
+- Express File Upload
 - Razorpay SDK
-- Nodemailer
+- CORS
+- Dotenv
 - REST API
 
 ---
 
-# Database
+## Database
 
 - MongoDB Atlas
-- Mongoose ODM
 
 ---
 
-# Deployment
+## Deployment
 
 - Render (Frontend)
 - Render (Backend)
 
 ---
 
-#  Project Structure
+# 📂 Project Structure
 
-```
+```text
 Quirex
 │
-├── Frontend
-│   ├── Components
-│   ├── Pages
-│   ├── Assets
-│   ├── Context
-│   ├── Services
-│   └── Utils
-│
 ├── Backend
-│   ├── Routes
-│   ├── Controllers
-│   ├── Models
-│   ├── Middleware
-│   ├── Config
-│   ├── Utils
-│   └── Uploads
+│   ├── config
+│   ├── model
+│   ├── route
+│   ├── uploads
+│   ├── index.js
+│   └── package.json
 │
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── data
+│   │   ├── utils
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── package.json
+│
+├── Screenshots
 └── README.md
 ```
+
 ---
 
-# API Features
+# 📡 API Features
 
-- Authentication APIs
-- Property APIs
 - User APIs
+- Property APIs
 - Contact APIs
-- Razorpay Payment APIs
+- Payment APIs
+- Razorpay APIs
 - Admin APIs
 
 ---
 
-#  Security Features
+# 🔐 Security Features
 
-- JWT Authentication
-- Password Hashing
-- Protected Routes
-- Input Validation
-- Secure Payments
+- Protected User Access
+- Secure API Communication
 - Environment Variables
-- Role-Based Access
+- Input Validation
+- Secure Payment Gateway
+- Database Security
 
 ---
 
-#  Performance Improvements
+# 🚀 Performance Improvements
 
-- Optimized Search
-- Responsive Design
-- Lazy Loading
-- Better UI Experience
-- Improved Listing Page
-- Faster Navigation
+- Optimized Property Search
+- Faster API Communication
+- Responsive User Interface
+- Enhanced Property Listing
+- Improved Navigation
+- Better User Experience
 
 ---
 
-#  Future Enhancements
+# 🔮 Future Enhancements
 
-- ❤️ Wishlist
-- 📍 Google Maps Integration
-- 🤖 AI Property Recommendation
-- 📅 Property Booking
-- ⭐ Property Reviews
-- 📊 Analytics Dashboard
-- 📱 Mobile Application
-- 🔔 Push Notifications
-- 📧 Email Notifications
-- 🌍 Multi-language Support
+- Wishlist
+- Google Maps Integration
+- AI Property Recommendation
+- Property Booking
+- Property Reviews
+- Mobile Application
+- Push Notifications
+- Email Notifications
+- Analytics Dashboard
+- Multi-language Expansion
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome!
+Contributions are always welcome.
 
-1. Fork the repository
+1. Fork this repository
 
-2. Create a new branch
+2. Create a feature branch
 
-```
+```bash
 git checkout -b feature-name
 ```
 
 3. Commit your changes
 
-```
+```bash
 git commit -m "Added new feature"
 ```
 
-4. Push
+4. Push to GitHub
 
-```
+```bash
 git push origin feature-name
 ```
 
@@ -319,7 +329,7 @@ git push origin feature-name
 
 ### Asmita Rajbhar
 
-B.Tech Information Technology
+B.Tech (Information Technology)
 
 Institute of Engineering and Technology, Ayodhya
 
@@ -330,7 +340,7 @@ https://github.com/Asmita1434
 
 ### Srishti Tripathi
 
-B.Tech Information Technology
+B.Tech (Information Technology)
 
 Institute of Engineering and Technology, Ayodhya
 
@@ -338,26 +348,26 @@ Institute of Engineering and Technology, Ayodhya
 
 ### Hemlata Mishra
 
-B.Tech Information Technology
+B.Tech (Information Technology)
 
 Institute of Engineering and Technology, Ayodhya
 
 ---
 
-# ⭐ If you like this project
+# ⭐ Support
 
-Please give this repository a ⭐ on GitHub.
+If you found this project useful, please consider giving it a ⭐ on GitHub.
 
-It motivates us to build more amazing open-source projects.
+Your support motivates us to continue building better open-source projects.
 
 ---
 
 # 📚 Academic Project
 
-Quirex is an academic **Final Year Major Project** developed as part of the B.Tech (Information Technology) curriculum at the Institute of Engineering and Technology (IET), Ayodhya.
+Quirex is a **Final Year Major Project** developed during the **Final Year** of the **Bachelor of Technology (Information Technology)** program at the **Institute of Engineering and Technology (IET), Ayodhya**.
 
-The project is intended for educational, learning, and demonstration purposes.
+The project demonstrates the practical implementation of modern MERN Stack technologies, secure online payment integration using Razorpay, cloud database management with MongoDB Atlas, and a responsive web application for real estate management.
+
+---
 
 © 2026 Quirex Team. All Rights Reserved.
-
-
