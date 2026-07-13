@@ -74,11 +74,6 @@ const ChatBot = () => {
         setTimeout(async () => {
             const intent = detectIntent(text);
 
-            if (intent) {
-                addBotMessage(botKnowledge[intent][language]);
-                setTyping(false);
-                return;
-            }
 
             const city = extractCity(text);
 
@@ -110,6 +105,12 @@ const ChatBot = () => {
                     );
                 }
 
+                setTyping(false);
+                return;
+            }
+
+            if (intent) {
+                addBotMessage(botKnowledge[intent][language]);
                 setTyping(false);
                 return;
             }
